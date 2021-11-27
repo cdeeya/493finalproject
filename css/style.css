@@ -1,9 +1,9 @@
 p {
     font-size: 1em;
 }
-
+/* NAV */
 .nav {
-    height: 14%;
+    height: 12%;
     width: 100vw;
     position: fixed;
     z-index: 1;
@@ -13,12 +13,11 @@ p {
     overflow-x: hidden;
 }
 .nav-links {
-    padding: 2vw;
+    padding-top: 2vw;
     text-align: center;
-
 }
 .nav a {
-    padding: 8px 8px 8px 8px;
+    padding: 8px;
     text-decoration: none;
     font-size: 24px;
     color: #354b57;
@@ -26,21 +25,23 @@ p {
     text-align: center;
 }
 .nav img {
-    width: 50px;
-    height: 50px;
-    padding-left: 5vw;
-    padding-right: 5vw;
+    width: 40px;
+    height: 40px;
+    padding-left: 6vw;
+    padding-right: 6vw;
 }
-  
+
+/* BODY */
 body { 
     margin: 0; padding: 0; 
 }
 
+/* MAP */
 #map { 
     position: fixed; 
     top: 20; 
     bottom: 0; 
     /* vw and vh stand for viewport width/height. We are getting these in html file */
     width: 100vw; 
-    height: 85vh; 
+    height: 90vh; 
 }
