@@ -23,8 +23,8 @@ Design for mobile first!
 			<!-- need to add onclick, hide or show certain pages with vue or display block-->
 			<a tabindex="1" href="#Profile">
 				<img src="images/icons/profile.png" alt="Profile tab" /></a>
-			<a tabindex="1" href="#Home">
-				<img src="images/icons/home.png" alt="Home tab" /></a>
+			<a tabindex="1" href="#Quests">
+				<img src="images/icons/quests.png" alt="Quests tab" /></a>
 			<a tabindex="1" href="#Map">
 				<img src="images/icons/map.png" alt="Map tab" /></a>
 			</div>
@@ -32,21 +32,22 @@ Design for mobile first!
 	</div>
 
 	<!-- idk how to do this in vue rn, can change later. -->
-	<div id="Home"style="display:none" >
-		<!-- hiding home display for now: this is how we will show page changes.. -->
-		<p>This is the Homepage</p>
+	<!-- rather than a home, name this our quests tab -->
+	
+	<div id="Profile" >
 		Content of page 1
+	</div>
+
+	<div id="Quests"style="display:none" >
+		<!-- hiding home display for now: this is how we will show page changes.. -->
+		<p>This is the Quests tab</p>
+		Content of page 2
 	</div>
 		
 	<div id="Map" >
-		Content of page 2
+		Content of page 3
 		<div id="map"></div>
 	</div>
-
-	<div id="Profile" >
-		Content of page 3
-	</div>
-
 
 <script>
 	mapboxgl.accessToken = 'pk.eyJ1IjoidGVhbS1ndXp6aWUiLCJhIjoiY2t2aWFyaXhhY2kyMDJ3bnpvZzJuZTZ5aCJ9.JTDWinEddb4DDs-Rka2G6A';
