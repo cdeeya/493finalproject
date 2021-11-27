@@ -20,24 +20,26 @@ Design for mobile first!
 	<div id = "nav" class = "nav">
 		<nav>
 			<div class="nav-links">
-			<a tabindex="1" href="#Profile"><img src="images/icons/profile.png" alt="Profile tab" /></a>
-			<a tabindex="1" href="#Home"><img src="images/icons/home.png" alt="Home tab" /></a>
-			<a tabindex="1" href="#Map"><img src="images/icons/map.png" alt="Map tab" /></a>
+			<!-- need to add onclick, hide or show certain pages with vue or display block-->
+			<a tabindex="1" href="#Profile">
+				<img src="images/icons/profile.png" alt="Profile tab" /></a>
+			<a tabindex="1" href="#Home">
+				<img src="images/icons/home.png" alt="Home tab" /></a>
+			<a tabindex="1" href="#Map">
+				<img src="images/icons/map.png" alt="Map tab" /></a>
 			</div>
 		</nav>
 	</div>
 
 	<!-- idk how to do this in vue rn, can change later. -->
-	<div id="Home" >
+	<div id="Home"style="display:none" >
 		<!-- hiding home display for now: this is how we will show page changes.. -->
 		<p>This is the Homepage</p>
 		Content of page 1
-		<a href="#" onclick="return show('Home','Map');">Show Nav</a>
 	</div>
 		
-	<div id="Map" style="display:none">
+	<div id="Map" >
 		Content of page 2
-		<a href="#" onclick="return show('Home','Map');">Show Home</a>
 		<div id="map"></div>
 	</div>
 
