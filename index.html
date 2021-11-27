@@ -11,41 +11,62 @@
 	<script src="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js"></script>
 </head>
 
+<!-- IMPORTANT:
+Design for mobile first!
+ -->
+
 <body>
 
-	<div id="Home" style="display:none">
-		<!-- hiding home display for now -->
-		<p>testing</p>
+	<div id = "nav" class = "nav">
+		<nav>
+			<div class="nav-links">
+			<a tabindex="1" href="#Profile"><img src="images/icons/profile.png" alt="Profile tab" /></a>
+			<a tabindex="1" href="#Home"><img src="images/icons/home.png" alt="Home tab" /></a>
+			<a tabindex="1" href="#Map"><img src="images/icons/map.png" alt="Map tab" /></a>
+			</div>
+		</nav>
+	</div>
+
+	<!-- idk how to do this in vue rn, can change later. -->
+	<div id="Home" >
+		<!-- hiding home display for now: this is how we will show page changes.. -->
+		<p>This is the Homepage</p>
 		Content of page 1
 		<a href="#" onclick="return show('Home','Map');">Show Nav</a>
 	</div>
 		
-	<div id="Map" >
+	<div id="Map" style="display:none">
 		Content of page 2
 		<a href="#" onclick="return show('Home','Map');">Show Home</a>
 		<div id="map"></div>
 	</div>
 
+	<div id="Profile" >
+		Content of page 3
+	</div>
+
 
 <script>
-mapboxgl.accessToken = 'pk.eyJ1IjoidGVhbS1ndXp6aWUiLCJhIjoiY2t2aWFyaXhhY2kyMDJ3bnpvZzJuZTZ5aCJ9.JTDWinEddb4DDs-Rka2G6A';
-const map = new mapboxgl.Map({
-container: 'map', // container ID
-style: 'mapbox://styles/team-guzzie/ckviauzayahyg14pcmcsenbvt/draft', // style URL
-center: [-83.7430, 42.2808], // starting position [lng, lat]
-zoom: 13 // starting zoom
-});
+	mapboxgl.accessToken = 'pk.eyJ1IjoidGVhbS1ndXp6aWUiLCJhIjoiY2t2aWFyaXhhY2kyMDJ3bnpvZzJuZTZ5aCJ9.JTDWinEddb4DDs-Rka2G6A';
+	const map = new mapboxgl.Map({
+	container: 'map', // container ID
+	style: 'mapbox://styles/team-guzzie/ckviauzayahyg14pcmcsenbvt/draft', // style URL
+	center: [-83.7430, 42.2808], // starting position [lng, lat]
+	zoom: 13 // starting zoom
+	});
 
-const popup = new mapboxgl.Popup({ closeOnClick: false })
-.setLngLat([-83.7376137162, 42.2717655796])
-.setHTML('<p>Objective: UMMA</p>')
-.setMaxWidth("50px")
-.addTo(map);
-
+	const popup = new mapboxgl.Popup({ closeOnClick: false })
+	.setLngLat([-83.7376137162, 42.2717655796])
+	.setHTML('<p>Objective: UMMA</p>')
+	.setMaxWidth("50px")
+	.addTo(map);
+	
 </script>
 <!-- <script src = "script.js" type="text/javascript"></script> -->
 
 
+
 </body>
+
 
 </html>
