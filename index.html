@@ -3,6 +3,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Nier Campus</title>
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 	<link href="css/style.css" rel="stylesheet">
@@ -12,15 +13,17 @@
 
 <body>
 
-	<div id="Page1">
+	<div id="Home" style="display:none">
+		<!-- hiding home display for now -->
+		<p>testing</p>
 		Content of page 1
-		<a href="#" onclick="return show('Page2','Page1');">Show page 2</a>
-		<div id="map"></div>
+		<a href="#" onclick="return show('Home','Map');">Show Nav</a>
 	</div>
 		
-	<div id="Page2" style="display:none">
+	<div id="Map" >
 		Content of page 2
-		<a href="#" onclick="return show('Page1','Page2');">Show page 1</a>
+		<a href="#" onclick="return show('Home','Map');">Show Home</a>
+		<div id="map"></div>
 	</div>
 
 
@@ -40,6 +43,8 @@ const popup = new mapboxgl.Popup({ closeOnClick: false })
 .addTo(map);
 
 </script>
+<!-- <script src = "script.js" type="text/javascript"></script> -->
+
 
 </body>
 
