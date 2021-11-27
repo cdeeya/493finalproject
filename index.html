@@ -1,1 +1,34 @@
-<h1>test</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Display a map on a webpage</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 30%; height: 70%; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoidGVhbS1ndXp6aWUiLCJhIjoiY2t2aWFyaXhhY2kyMDJ3bnpvZzJuZTZ5aCJ9.JTDWinEddb4DDs-Rka2G6A';
+const map = new mapboxgl.Map({
+container: 'map', // container ID
+style: 'mapbox://styles/team-guzzie/ckviauzayahyg14pcmcsenbvt/draft', // style URL
+center: [-83.7430, 42.2808], // starting position [lng, lat]
+zoom: 13 // starting zoom
+});
+
+const popup = new mapboxgl.Popup({ closeOnClick: false })
+.setLngLat([-83.7376137162, 42.2717655796])
+.setHTML('<p>Objective: UMMA</p>')
+.setMaxWidth("50px")
+.addTo(map);
+
+</script>
+
+</body>
+</html>
