@@ -4,4 +4,7 @@ var test = new Vue({
   },
   methods: {
   }
+  // TESTING...
 })
+
+
