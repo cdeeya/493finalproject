@@ -1,20 +1,31 @@
 <!DOCTYPE html>
+<html lang="en">
 <html>
 <head>
-<meta charset="utf-8">
-<title>Display a map on a webpage</title>
-<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-<link href="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css" rel="stylesheet">
-<script src="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js"></script>
-<style>
-body { margin: 0; padding: 0; }
-#map { position: fixed; top: 0; bottom: 0; width: 400px; height: 650px; }
-</style>
+	<meta charset="utf-8">
+	<title>Nier Campus</title>
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css" rel="stylesheet">
+	<script src="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js"></script>
 </head>
+
 <body>
-<div id="map"></div>
+
+	<div id="Page1">
+		Content of page 1
+		<a href="#" onclick="return show('Page2','Page1');">Show page 2</a>
+		<div id="map"></div>
+	</div>
+		
+	<div id="Page2" style="display:none">
+		Content of page 2
+		<a href="#" onclick="return show('Page1','Page2');">Show page 1</a>
+	</div>
+
+
 <script>
-	mapboxgl.accessToken = 'pk.eyJ1IjoidGVhbS1ndXp6aWUiLCJhIjoiY2t2aWFyaXhhY2kyMDJ3bnpvZzJuZTZ5aCJ9.JTDWinEddb4DDs-Rka2G6A';
+mapboxgl.accessToken = 'pk.eyJ1IjoidGVhbS1ndXp6aWUiLCJhIjoiY2t2aWFyaXhhY2kyMDJ3bnpvZzJuZTZ5aCJ9.JTDWinEddb4DDs-Rka2G6A';
 const map = new mapboxgl.Map({
 container: 'map', // container ID
 style: 'mapbox://styles/team-guzzie/ckviauzayahyg14pcmcsenbvt/draft', // style URL
@@ -31,4 +42,5 @@ const popup = new mapboxgl.Popup({ closeOnClick: false })
 </script>
 
 </body>
+
 </html>
