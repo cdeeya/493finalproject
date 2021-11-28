@@ -56,7 +56,9 @@ Design for mobile first! -->
 		<div id="Quests" v-show="questListPage" >
 			<h1> Quest List </h1>
 			<p>This is the Quest List Page</p>
+			<!-- <p>DEBUG: before for</p> -->
 			<div id = "questList" v-for = "(quest, idx) in questList">
+				<!-- <p>DEBUG: in for</p> -->
 				<div class="row">
 			      {{questList[idx].name}}
 						{{questList[idx].information}}
