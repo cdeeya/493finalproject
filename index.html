@@ -9,6 +9,12 @@
 	<link href="css/style.css" rel="stylesheet">
 	<link href="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css" rel="stylesheet">
 	<script src="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js"></script>
+	<!-- taken from hw style and scripts: -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 </head>
 
 <!-- IMPORTANT:
@@ -31,39 +37,26 @@ Design for mobile first! -->
 		</nav>
 	</div>
 
-	<div id="Profile" >
+	<div id="Profile" v-show="profilePage" >
 		Content of page 1
 	</div>
 
 	<!-- rather than a home, name this our quests tab -->
-	<div id="Quests"style="display:none" >
+	<div id="Quests" v-show="questListPage" >
 		<!-- hiding home display for now: this is how we will show page changes.. -->
 		<p>This is the Quests tab</p>
 		Content of page 2
 	</div>
 		
-	<div id="Map" >
+	<div id="Map" v-show="mapPage" >
 		Content of page 3
 		<div id="map"></div>
 	</div>
 
 <!-- need to figure out how to migrate this stuff -->
-<script>
-	mapboxgl.accessToken = 'pk.eyJ1IjoidGVhbS1ndXp6aWUiLCJhIjoiY2t2aWFyaXhhY2kyMDJ3bnpvZzJuZTZ5aCJ9.JTDWinEddb4DDs-Rka2G6A';
-	const map = new mapboxgl.Map({
-	container: 'map', // container ID
-	style: 'mapbox://styles/team-guzzie/ckviauzayahyg14pcmcsenbvt/draft', // style URL
-	center: [-83.7430, 42.2808], // starting position [lng, lat]
-	zoom: 13 // starting zoom
-	});
 
-	const popup = new mapboxgl.Popup({ closeOnClick: false })
-	.setLngLat([-83.7376137162, 42.2717655796])
-	.setHTML('<p>Objective: UMMA</p>')
-	.setMaxWidth("50px")
-	.addTo(map);
-	
-</script>
+<script src="script.js"></script>
+
 <!-- <script src = "script.js" type="text/javascript"></script> -->
 
 
