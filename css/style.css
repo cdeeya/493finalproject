@@ -1,7 +1,28 @@
+h1 {
+    padding: 4%;
+}
 p {
     font-size: 1em;
 }
+/* do we want to keep this font (same as  HW 2)*/
+body{
+    font-family: VT323;
+}
+#content {
+    margin-top: 5vh;
+}
 /* NAV */
+#heading {
+    height: 5vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #e1e9ee;
+    overflow-x: hidden;
+    text-align: center;
+}
 .nav {
     height: 12%;
     width: 100vw;
@@ -36,10 +57,22 @@ body {
     margin: 0; padding: 0; 
 }
 
+#Profile {
+    text-align: center;
+}
+
+#Quests {
+    text-align: center;
+}
+
+#Map {
+    text-align: center;
+}
+
 /* MAP */
 #map { 
     position: fixed; 
-    top: 20; 
+    top: 10vh; 
     bottom: 0; 
     /* vw and vh stand for viewport width/height. We are getting these in html file */
     width: 100vw; 
