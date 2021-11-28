@@ -36,7 +36,7 @@ Design for mobile first! -->
 			<!-- can someone help make this vue functionality? -->
 			<a tabindex="1" href="#Profile" v-on:click="SwitchProfile()">
 				<img src="images/icons/profile.png" alt="Profile tab" /></a>
-			<a tabindex="1" href="#Quests" v-on:click="SwitchQuests()">
+			<a tabindex="1" href="#Quests" v-on:click="SwitchQuests(); checkQuests()">
 				<img src="images/icons/quests.png" alt="Quests tab" /></a>
 			<a tabindex="1" href="#Map" v-on:click="SwitchMap()">
 				<img src="images/icons/map.png" alt="Map tab" /></a>
@@ -53,7 +53,7 @@ Design for mobile first! -->
 			<img id = "profilePic" src="images/chara1.png" alt="profile image"/>
 		</div>
 
-		<div id="Quests" v-show="questListPage" >
+		<div id="Quests" v-show="questListPage">
 			<h1> Quest List </h1>
 			<p>This is the Quest List Page</p>
 			<!-- <p>DEBUG: before for</p> -->
@@ -63,10 +63,12 @@ Design for mobile first! -->
 				<!-- Note: need a way to click on quest and show more details-->
 				<div class="row">
 			      {{questList[idx].name}}
-				  <!--TODO: must change according to state -->
-				  <!-- <p v-show="completed">Quest Completed</p> -->
-				  <p id="questCaption">New Quest!</p>
-				  <!-- v-on:click: switch quest list to clicked quest details-->
+				  <!--TODO: must change according to state (v-if)?-->
+				  
+				  <!-- help please -->
+				  <p v-if="questComplete(idx)">Quest Completed</p>
+				  <p v-else id="questCaption">New Quest!</p>
+				  <!-- v-on:click: switch quest list to clicked-quest details-->
 	
 				</div>
 			</button>

@@ -48,27 +48,48 @@ var test = new Vue({
       this.profilePage = false;
     },
 
-
+  
     //FILL UP QUEST Info
     //initialize our array with these empty quest objects
     //just straight hard code in the quest information
-    fillQuestInfo: function() {
+    // fillQuestInfo: function() {
 
-      // TODO: how to initialize quest so v-for works???
+    //   // TODO: how to initialize quest so v-for works???
 
-      //quest #1
+    //   //quest #1
 
-        this.questList.push = new quest; //look into initializing array with this object
-        this.questList[0].name = "Bob and Betty Beyster Building Bake Off (BBBBB)";
-        this.questList[0].information = "Draw something funny on the board in room 1670 BBB";
+    //     this.questList.push = new quest; //look into initializing array with this object
+    //     this.questList[0].name = "Bob and Betty Beyster Building Bake Off (BBBBB)";
+    //     this.questList[0].information = "Draw something funny on the board in room 1670 BBB";
 
-      //quest #2
-        this.questList.push = new quest;
-        this.questList[1].name = "Bob and Betty Beyster Building Bake Off (BBBBB)";
-        this.questList[1].information = "Draw something funny on the board in room 1670 BBB";
+    //   //quest #2
+    //     this.questList.push = new quest;
+    //     this.questList[1].name = "Bob and Betty Beyster Building Bake Off (BBBBB)";
+    //     this.questList[1].information = "Draw something funny on the board in room 1670 BBB";
+    // },
+
+    checkQuests: function() {
+      console.log("this checks quest bool values")
+      for (i = 0; i < questList.length; ++i){
+        console.log("this is inside checkQuests() for loop")
+        // TODO: check + change(?) bool values of completed, started, read, favorited
+        // testing:
+        questList[0].completed = true;
+      } // for
     },
 
-  }
+    questComplete: function(idx) {
+      // help please
+      // console.log("in questComplete function")
+      if (this.questList[idx].completed == true){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+
+  } // methods
 })
 
 
