@@ -57,15 +57,19 @@ Design for mobile first! -->
 			<h1> Quest List </h1>
 			<p>This is the Quest List Page</p>
 			<!-- <p>DEBUG: before for</p> -->
-			<div id = "questList" v-for = "(quest, idx) in questList">
+			<div>
+			<button id = "questList" v-for = "(quest, idx) in questList">
 				<!-- <p>DEBUG: in for</p> -->
 				<!-- Note: need a way to click on quest and show more details-->
 				<div class="row">
 			      {{questList[idx].name}}
-				  <!--Note: change according to state later-->
+				  <!--TODO: must change according to state -->
+				  <!-- <p v-show="completed">Quest Completed</p> -->
 				  <p id="questCaption">New Quest!</p>
+				  <!-- v-on:click: switch quest list to clicked quest details-->
 	
 				</div>
+			</button>
 			</div>
 		</div>
 
