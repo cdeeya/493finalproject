@@ -1,25 +1,17 @@
 h1 {
-    padding-top: 3%;
-    margin: 1%;
+    padding: 4%;
 }
 p {
-    font-size: 1.3em;
-    margin: 3%;
+    font-size: 1em;
 }
-/* BODY */
+/* do we want to keep this font (same as  HW 2)*/
 body{
-    /* same font as HW2 */
     font-family: VT323;
-    margin: 0; 
-    padding: 0; 
 }
-
-/* frame for content */
-#content { 
+#content {
     margin-top: 5vh;
 }
-
-/* HEADING */
+/* NAV */
 #heading {
     height: 5vh;
     width: 100vw;
@@ -31,12 +23,6 @@ body{
     overflow-x: hidden;
     text-align: center;
 }
-#heading p {
-    font-size: 1em;
-    margin: 1%;
-}
-
-/* BOTTOM NAV */
 .nav {
     height: 12%;
     width: 100vw;
@@ -66,33 +52,27 @@ body{
     padding-right: 6vw;
 }
 
-/* PROFILE */
+/* BODY */
+body { 
+    margin: 0; padding: 0; 
+}
+
 #Profile {
     text-align: center;
 }
-#emote {
-    max-width: 20vw;
-    max-height: 20vh;
-}
-#profilePic {
-    padding: 15%;
-    padding-top: 0;
-    max-width: 50vw;
-    max-height: 60vh;
-}
 
-/* QUESTS */
 #Quests {
     text-align: center;
 }
 
-/* MAP */
 #Map {
     text-align: center;
 }
+
+/* MAP */
 #map { 
     position: fixed; 
-    top: 17vh; 
+    top: 10vh; 
     bottom: 0; 
     /* vw and vh stand for viewport width/height. We are getting these in html file */
     width: 100vw; 
