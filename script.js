@@ -4,6 +4,7 @@ var test = new Vue({
     // tracking status of page displaying
     profilePage: true,
     questListPage: false,
+    questDetailsPage: false,
     mapPage: false,
 
     //quest object
@@ -34,21 +35,31 @@ var test = new Vue({
       this.profilePage = true;
       this.questListPage = false;
       this.mapPage = false;
+      this.questDetailsPage = false;
     },
     SwitchQuests: function() {
       console.log("this changes the page to Quest List page")
       this.questListPage = true;
       this.profilePage = false;
       this.mapPage = false;
+      this.questDetailsPage = false;
     },
     SwitchMap: function() {
       console.log("this changes the page to Map View page")
       this.mapPage = true;
       this.questListPage = false;
       this.profilePage = false;
+      this.questDetailsPage = false;
     },
 
-  
+    SwitchDetails: function() {
+      console.log("this changes the page to Quest Details page")
+      this.questListPage = false;
+      this.profilePage = false;
+      this.mapPage = false;
+      this.questDetailsPage = true;
+    },
+
     //FILL UP QUEST Info
     //initialize our array with these empty quest objects
     //just straight hard code in the quest information

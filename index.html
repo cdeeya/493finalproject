@@ -58,13 +58,14 @@ Design for mobile first! -->
 			<p>This is the Quest List Page</p>
 			<!-- <p>DEBUG: before for</p> -->
 			<div>
-			<button id = "questList" v-for = "(quest, idx) in questList">
+			<button id = "questList" v-for = "(quest, idx) in questList" v-on:click="SwitchDetails()">
+
 				<!-- <p>DEBUG: in for</p> -->
 				<!-- Note: need a way to click on quest and show more details-->
 				<div class="row">
 			      {{questList[idx].name}}
 				  <!--TODO: must change according to state (v-if)?-->
-				  
+
 				  <!-- help please -->
 				  <p v-if="questComplete(idx)">Quest Completed</p>
 				  <p v-else id="questCaption">New Quest!</p>
@@ -73,6 +74,12 @@ Design for mobile first! -->
 				</div>
 			</button>
 			</div>
+		</div>
+
+		<!-- Note: how to change this based on what quest was clicked on? -->
+		<div id = "QuestDetails" v-show="questDetailsPage">
+			<h1>Quest Details</h1>
+			<p>This shows the details of the quest you clicked on</p>
 		</div>
 
 		<div id="Map" v-show="mapPage" >
