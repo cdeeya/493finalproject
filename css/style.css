@@ -86,6 +86,11 @@ body{
     text-align: center;
 }
 
+#questButton {
+    background-color: dimgray;
+    font-size: 25px;
+}
+
 /* MAP */
 #Map {
     text-align: center;
