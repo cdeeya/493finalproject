@@ -10,12 +10,12 @@ p {
 body{
     /* same font as HW2 */
     font-family: VT323;
-    margin: 0; 
-    padding: 0; 
+    margin: 0;
+    padding: 0;
 }
 
 /* frame for content */
-#content { 
+#content {
     margin-top: 5vh;
 }
 
@@ -86,20 +86,24 @@ body{
     text-align: center;
 }
 
-#questButton {
-    background-color: dimgray;
+#questList {
+    background-color: gainsboro;
     font-size: 25px;
+    width: 80%;
+    height: 15%;
+    margin: 5%;
+    padding: 5%;
 }
 
 /* MAP */
 #Map {
     text-align: center;
 }
-#map { 
-    position: fixed; 
-    top: 17vh; 
-    bottom: 0; 
+#map {
+    position: fixed;
+    top: 17vh;
+    bottom: 0;
     /* vw and vh stand for viewport width/height. We are getting these in html file */
-    width: 100vw; 
-    height: 90vh; 
+    width: 100vw;
+    height: 90vh;
 }

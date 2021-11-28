@@ -9,7 +9,10 @@ var test = new Vue({
     //quest object
     questList: [
       {completed: false, started: false, read: false, favorited: false, name: "Bob and Betty Beyster Building Bake Off (BBBBB)", information: "Draw something funny on the board in room 1670 BBB"},
-      {completed: false, started: false, read: false, favorited: false, name: "Art at the UMMA", information: "Take three photos of art pieces you enjoyed"}
+      {completed: false, started: false, read: false, favorited: false, name: "Thanks U(I) for the Memories", information: "High-five and thank a 493 IA in room 1670 BBB"},
+      {completed: false, started: false, read: false, favorited: false, name: "Art at the UMMA", information: "Take three photos of art pieces you enjoyed"},
+      {completed: false, started: false, read: false, favorited: false, name: "Diag Dinner", information: "Catch 3 campus squirrels"},
+
     ],
     quest: {
       completed: false,
@@ -54,7 +57,7 @@ var test = new Vue({
       // TODO: how to initialize quest so v-for works???
 
       //quest #1
-  
+
         this.questList.push = new quest; //look into initializing array with this object
         this.questList[0].name = "Bob and Betty Beyster Building Bake Off (BBBBB)";
         this.questList[0].information = "Draw something funny on the board in room 1670 BBB";
