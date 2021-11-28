@@ -14,6 +14,7 @@ var test = new Vue({
       read: false,
       favorited: false,
       information: " ",
+      name: " ",
     }
 
     //let Quest = {completed: false, started: false, read: false, favorited: false},
@@ -46,8 +47,16 @@ var test = new Vue({
     //initialize our array with these empty quest objects
     //just straight hard code in the quest information
     fillQuestInfo: function() {
+      //quest #1
+        this.questList[0] = this.quest; //look into initializing array with this object
+        this.questList[0].name = "Bob and Betty Beyster Building Bake Off (BBBBB)";
+        this.questList[0].information = "Draw something funny on the board in room 1670 BBB";
 
-    }
+      //quest #2
+        this.questList[1] = this.quest;
+        this.questList[1].name = "Bob and Betty Beyster Building Bake Off (BBBBB)";
+        this.questList[1].information = "Draw something funny on the board in room 1670 BBB";
+    },
 
   }
 })

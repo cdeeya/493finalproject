@@ -23,9 +23,9 @@
 Design for mobile first! -->
 
 <body>
-<div id='app'> 
+<div id='app'>
 
-	<div id = "heading"> 
+	<div id = "heading">
 		<p>Nier Campus</p>
 	</div>
 
@@ -50,14 +50,20 @@ Design for mobile first! -->
 			<p>This is the Profile Page</p>
 			<img id = "emote" src="images/happy.png" alt="happy emote" />
 			<br>
-			<img id = "profilePic" src="images/chara1.png" alt="profile image" />
+			<img id = "profilePic" src="images/chara1.png" alt="profile image"/>
 		</div>
 
 		<div id="Quests" v-show="questListPage" >
 			<h1> Quest List </h1>
 			<p>This is the Quest List Page</p>
+			<div id = "questList" v-for = "(quest, idx) in questList">
+				<div class="row">
+			      {{questList[idx].name}}
+						{{questList[idx].information}}
+				</div>
+			</div>
 		</div>
-			
+
 		<div id="Map" v-show="mapPage" >
 			<h1> Map View </h1>
 			<p>This is Map View Page</p>
