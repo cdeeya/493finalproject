@@ -6,14 +6,20 @@ p {
     font-size: 1.3em;
     margin: 3%;
 }
-/* do we want to keep this font (same as  HW 2)*/
+/* BODY */
 body{
+    /* same font as HW2 */
     font-family: VT323;
+    margin: 0; 
+    padding: 0; 
 }
-#content {
+
+/* frame for content */
+#content { 
     margin-top: 5vh;
 }
-/* NAV */
+
+/* HEADING */
 #heading {
     height: 5vh;
     width: 100vw;
@@ -25,6 +31,12 @@ body{
     overflow-x: hidden;
     text-align: center;
 }
+#heading p {
+    font-size: 1em;
+    margin: 1%;
+}
+
+/* BOTTOM NAV */
 .nav {
     height: 12%;
     width: 100vw;
@@ -54,24 +66,30 @@ body{
     padding-right: 6vw;
 }
 
-/* BODY */
-body { 
-    margin: 0; padding: 0; 
-}
-
+/* PROFILE */
 #Profile {
     text-align: center;
 }
+#emote {
+    max-width: 20vw;
+    max-height: 20vh;
+}
+#profilePic {
+    padding: 15%;
+    padding-top: 0;
+    max-width: 50vw;
+    max-height: 60vh;
+}
 
+/* QUESTS */
 #Quests {
     text-align: center;
 }
 
+/* MAP */
 #Map {
     text-align: center;
 }
-
-/* MAP */
 #map { 
     position: fixed; 
     top: 17vh; 
