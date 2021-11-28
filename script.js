@@ -18,5 +18,3 @@ var test = new Vue({
 
   }
 })
-
-
