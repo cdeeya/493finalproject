@@ -1,6 +1,10 @@
 p {
     font-size: 1em;
 }
+/* do we want to keep this font (same as  HW 2)*/
+body{
+    font-family: VT323;
+}
 /* NAV */
 .nav {
     height: 12%;
