@@ -1,7 +1,7 @@
 var test = new Vue({
   el: '#app',
   data: {
-    profilePage: false,
+    profilePage: true,
     questListPage: false,
     mapPage: false,
   },
@@ -9,14 +9,17 @@ var test = new Vue({
 
     SwitchProfile: function () {
       console.log("this changes the page to profile page")
+      profilePage = true;
     },
 
     SwitchQuests: function() {
-
+      console.log("this changes the page to Quest List page")
+      questListPage = true;
     },
 
     SwitchMap: function() {
-      
+      console.log("this changes the page to Map View page")
+      mapPage = true;
     }
     
 
