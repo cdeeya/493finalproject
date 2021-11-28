@@ -9,17 +9,23 @@ var test = new Vue({
 
     SwitchProfile: function () {
       console.log("this changes the page to profile page")
-      profilePage = true;
+      this.profilePage = true;
+      this.questListPage = false;
+      this.mapPage = false;
     },
 
     SwitchQuests: function() {
       console.log("this changes the page to Quest List page")
-      questListPage = true;
+      this.questListPage = true;
+      this.profilePage = false;
+      this.mapPage = false;
     },
 
     SwitchMap: function() {
       console.log("this changes the page to Map View page")
-      mapPage = true;
+      this.mapPage = true;
+      this.questListPage = false;
+      this.profilePage = false;
     }
     
 

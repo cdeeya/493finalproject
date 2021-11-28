@@ -30,27 +30,26 @@ Design for mobile first! -->
 			<!-- can someone help make this vue functionality? -->
 			<a tabindex="1" href="#Profile" v-on:click="SwitchProfile()">
 				<img src="images/icons/profile.png" alt="Profile tab" /></a>
-			<a tabindex="1" href="#Quests">
+			<a tabindex="1" href="#Quests" v-on:click="SwitchQuests()">
 				<img src="images/icons/quests.png" alt="Quests tab" /></a>
-			<a tabindex="1" href="#Map">
+			<a tabindex="1" href="#Map" v-on:click="SwitchMap()">
 				<img src="images/icons/map.png" alt="Map tab" /></a>
 			</div>
 		</nav>
 	</div>
 
 	<div id="Profile" v-show="profilePage" >
-		Content of page 1: Profile
+		<p>This is the Profile Page</p>
 	</div>
 
 	<!-- rather than a home, name this our quests tab -->
 	<div id="Quests" v-show="questListPage" >
 		<!-- hiding home display for now: this is how we will show page changes.. -->
-		<p>This is the Quests tab</p>
-		Content of page 2: Quest List
+		<p>This is the Quest List Page</p>
 	</div>
 		
 	<div id="Map" v-show="mapPage" >
-		Content of page 3: Map View
+		<p>This is Map View Page</p>
 		<div id="map"></div>
 	</div>
 
