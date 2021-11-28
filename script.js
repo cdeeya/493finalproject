@@ -5,6 +5,19 @@ var test = new Vue({
     profilePage: true,
     questListPage: false,
     mapPage: false,
+
+    //quest object
+    questList: [],
+    quest: {
+      completed: false,
+      started: false,
+      read: false,
+      favorited: false,
+      information: " ",
+    }
+
+    //let Quest = {completed: false, started: false, read: false, favorited: false},
+    //TODO: quest object should also include map information (quest location and quest distance from user)
   },
   methods: {
 
@@ -26,11 +39,19 @@ var test = new Vue({
       this.mapPage = true;
       this.questListPage = false;
       this.profilePage = false;
+    },
+
+
+    //FILL UP QUEST Info
+    //initialize our array with these empty quest objects
+    //just straight hard code in the quest information
+    fillQuestInfo: function() {
+
     }
-    
 
   }
 })
+
 
 // FOR MAPBOX
 mapboxgl.accessToken = 'pk.eyJ1IjoidGVhbS1ndXp6aWUiLCJhIjoiY2t2aWFyaXhhY2kyMDJ3bnpvZzJuZTZ5aCJ9.JTDWinEddb4DDs-Rka2G6A';
@@ -46,5 +67,3 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidGVhbS1ndXp6aWUiLCJhIjoiY2t2aWFyaXhhY2kyMDJ3b
 	.setHTML('<p>Objective: UMMA</p>')
 	.setMaxWidth("50px")
 	.addTo(map);
-  
-  
