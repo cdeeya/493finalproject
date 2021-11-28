@@ -1,26 +1,26 @@
 var test = new Vue({
   el: '#app',
   data: {
+    // tracking status of page displaying
     profilePage: true,
     questListPage: false,
     mapPage: false,
   },
   methods: {
 
+    // TO SWITCH PAGES:
     SwitchProfile: function () {
       console.log("this changes the page to profile page")
       this.profilePage = true;
       this.questListPage = false;
       this.mapPage = false;
     },
-
     SwitchQuests: function() {
       console.log("this changes the page to Quest List page")
       this.questListPage = true;
       this.profilePage = false;
       this.mapPage = false;
     },
-
     SwitchMap: function() {
       console.log("this changes the page to Map View page")
       this.mapPage = true;
@@ -32,6 +32,7 @@ var test = new Vue({
   }
 })
 
+// FOR MAPBOX
 mapboxgl.accessToken = 'pk.eyJ1IjoidGVhbS1ndXp6aWUiLCJhIjoiY2t2aWFyaXhhY2kyMDJ3bnpvZzJuZTZ5aCJ9.JTDWinEddb4DDs-Rka2G6A';
 	const map = new mapboxgl.Map({
 	container: 'map', // container ID

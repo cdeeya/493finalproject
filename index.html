@@ -25,6 +25,10 @@ Design for mobile first! -->
 <body>
 <div id='app'> 
 
+	<div id = "heading"> 
+		<p>Nier Campus</p>
+	</div>
+
 	<div id = "nav" class = "nav">
 		<nav>
 			<div class="nav-links">
@@ -41,16 +45,17 @@ Design for mobile first! -->
 	</div>
 
 	<div id="Profile" v-show="profilePage" >
+		<h1> Profile </h1>
 		<p>This is the Profile Page</p>
 	</div>
 
-	<!-- rather than a home, name this our quests tab -->
 	<div id="Quests" v-show="questListPage" >
-		<!-- hiding home display for now: this is how we will show page changes.. -->
+		<h1> Quest List </h1>
 		<p>This is the Quest List Page</p>
 	</div>
 		
 	<div id="Map" v-show="mapPage" >
+		<h1> Map View </h1>
 		<p>This is Map View Page</p>
 		<div id="map"></div>
 	</div>
