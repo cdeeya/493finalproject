@@ -84,15 +84,21 @@ body{
 /* QUESTS */
 #Quests {
     text-align: center;
+    margin-bottom: 30%;
 }
 
 #questList {
     background-color: gainsboro;
-    font-size: 25px;
+    font-size: 23px;
     width: 80%;
     height: 15%;
     margin: 5%;
     padding: 5%;
+}
+
+#questCaption {
+    font-size: 18px;
+    color: darkgray;
 }
 
 /* MAP */
