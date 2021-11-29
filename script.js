@@ -55,9 +55,8 @@ var test = new Vue({
     },
 
     SwitchDetails: function(idx) {
-      questIndex = idx;
-      console.log(idx);
-      console.log(questIndex);
+      this.questIndex = idx;
+      console.log(this.questIndex);
       console.log("this changes the page to Quest Details page")
       this.questListPage = false;
       this.profilePage = false;
