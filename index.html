@@ -38,20 +38,23 @@ change quest captions to respective states
 *HOGR
 ---DONE--- Add favorited functionality 
 toggle to filter for favorites in quest list
+try implementing a way to default sort quests by location
 
 *SLYGER
 Add in progress/current/most prioritized task to profile/home page
 (just use questIndex because it should be updated with latest clicked task)
 (if no in progress quest, just directs to task list)
 
-*HOGR + RAGER
-Making UI look decent (CSS)
-Add in sounds
-
 add back button functionality
 
+*SLYGER
 Add EXP and item/reward/badge system 
 Integrate customizable avatar
+
+*HOGR + RAGER
+Making UI look decent (CSS) -- have nice branding/colors
+Add in sounds
+find better pixel icons
 
 Consider adding more states 
 
@@ -96,7 +99,8 @@ add in animations
 		<div id="Quests" v-show="questListPage">
 			<h1> Quest List </h1>
 			<!-- <p>DEBUG: before for</p> -->
-			<div>
+			<!-- TODO: insert filter button for favorites here -->
+			<!-- Later: insert sort button? For now, default sort by location.. -->
 			<div id = "questList" v-for = "(quest, idx) in questList">
 
 				<!-- <p>DEBUG: in for</p> -->
@@ -116,7 +120,6 @@ add in animations
 						<!-- v-on:click: switch quest list to clicked-quest details-->
 					</button>
 				</div>
-			</div>
 			</div>
 		</div>
 

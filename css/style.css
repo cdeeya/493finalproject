@@ -2,6 +2,7 @@ h1 {
     font-size: 4.5vw;
     padding-top: 3%;
     margin: 1%;
+    color: #868BFE;
 }
 h2 {
     font-size: 3vw;
@@ -88,7 +89,7 @@ body{
 }
 
 #StartProfile {
-    background-color: gainsboro;
+    background-color: #e1e9ee;
     font-family: VT323;
     font-size: 23px;
     width: 80%;
@@ -103,7 +104,7 @@ body{
     margin-bottom: 30%;
 }
 #questList {
-    background-color: gainsboro;
+    background-color: #e1e9ee;
     width: 80%;
     height: 15%;
     margin: 3%;
@@ -119,11 +120,11 @@ body{
 .questStatus {
     float: right;
 }
-.questEntry button {
+.questBodyBtn {
+    font-family: VT323;
     background-color: white;
-    border: none;
     width: 100%;
-    color: black;
+    color: #868BFE;
     padding: 5px;
     text-align: center;
     text-decoration: none;
