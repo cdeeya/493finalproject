@@ -88,6 +88,11 @@ body{
     max-height: 60vh;
 }
 
+#expLabel {
+    padding-bottom: 5%;
+    padding-top: 0%;
+}
+
 #StartProfile {
     background-color: #e1e9ee;
     font-family: VT323;
