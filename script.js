@@ -138,13 +138,14 @@ var test = new Vue({
     },
     setCompleted: function(idx) {
       this.questList[idx].completed = true;
+      this.questList[idx].started = false;
     },
     toggleFavorited: function(idx) {
       this.questList[idx].favorited = !this.questList[idx].favorited;
     },
-    
 
-    
+
+
   } // methods
 })
 

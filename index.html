@@ -20,14 +20,14 @@
 </head>
 
 <!-- IMPORTANT:
-Design for mobile first! 
+Design for mobile first!
 
 PRIORITIZED TODO LIST:
 
 *DEGR
 add map updating into quest details
 add map + quest cross functionality
-(something weird happens when we just reload page and go to map view: 
+(something weird happens when we just reload page and go to map view:
 it doesn't take up the entire space and only does after resizing)
 
 *RAGER
@@ -36,27 +36,24 @@ change quest captions to respective states
 - complete quests need a checkmark or some cute pixel icon
 
 *HOGR
----DONE--- Add favorited functionality 
+---DONE--- Add favorited functionality
 toggle to filter for favorites in quest list
-try implementing a way to default sort quests by location
 
 *SLYGER
 Add in progress/current/most prioritized task to profile/home page
 (just use questIndex because it should be updated with latest clicked task)
 (if no in progress quest, just directs to task list)
 
+*HOGR + RAGER
+Making UI look decent (CSS)
+Add in sounds
+
 add back button functionality
 
-*SLYGER
-Add EXP and item/reward/badge system 
+Add EXP and item/reward/badge system
 Integrate customizable avatar
 
-*HOGR + RAGER
-Making UI look decent (CSS) -- have nice branding/colors
-Add in sounds
-find better pixel icons
-
-Consider adding more states 
+Consider adding more states
 
 Add share system (share to friends/sns)
 
@@ -99,8 +96,7 @@ add in animations
 		<div id="Quests" v-show="questListPage">
 			<h1> Quest List </h1>
 			<!-- <p>DEBUG: before for</p> -->
-			<!-- TODO: insert filter button for favorites here -->
-			<!-- Later: insert sort button? For now, default sort by location.. -->
+			<div>
 			<div id = "questList" v-for = "(quest, idx) in questList">
 
 				<!-- <p>DEBUG: in for</p> -->
@@ -108,11 +104,17 @@ add in animations
 				<div class="questEntry">
 					<div class="questTitle">
 						<h2>{{questList[idx].name}}</h2>
-						<img v-if="!questFavorited(idx)" v-on:click="toggleFavorited(idx)" 
+						<img v-if="!questFavorited(idx)" v-on:click="toggleFavorited(idx)"
 							src="images/icons/unfavorited.png" alt="unfavorited" /></a>
 				  		<img v-else src="images/icons/favorited.png" v-on:click="toggleFavorited(idx)" alt="favorited" /></a>
-						<p class="questStatus" v-if="questRead(idx)">Quest Read</p>
-						<p v-else class="questStatus">New Quest!</p>
+
+
+						<p class="questStatus" v-show="questStarted(idx)">Quest In-Progress</p>
+						<p class="questStatus" v-show="questCompleted(idx)">Quest Completed!</p>
+						<p v-show="!questRead(idx)" class="questStatus">New Quest!</p>
+
+<!-- toggle between the states? if started or completed, do not show anything else before that.  -->
+
 					</div>
 				  <!--TODO: must change according to state (v-if)?-->
 				  	<button class="questBodyBtn" v-on:click="SwitchDetails(idx); setRead(idx)">
@@ -120,6 +122,7 @@ add in animations
 						<!-- v-on:click: switch quest list to clicked-quest details-->
 					</button>
 				</div>
+			</div>
 			</div>
 		</div>
 
@@ -138,7 +141,7 @@ add in animations
 				<button id = "startEnd" v-on:click="setCompleted(questIndex)">End Quest</button>
 			</div>
 			<!-- we need to change icons for completed quests, and change color for read/unread -->
-			
+
 
 		</div>
 
