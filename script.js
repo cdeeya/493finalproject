@@ -6,6 +6,8 @@ var test = new Vue({
     questListPage: false,
     questDetailsPage: false,
     mapPage: false,
+    questIndex: 0,
+
 
     //quest object
     questList: [
@@ -52,7 +54,10 @@ var test = new Vue({
       this.questDetailsPage = false;
     },
 
-    SwitchDetails: function() {
+    SwitchDetails: function(idx) {
+      questIndex = idx;
+      console.log(idx);
+      console.log(questIndex);
       console.log("this changes the page to Quest Details page")
       this.questListPage = false;
       this.profilePage = false;

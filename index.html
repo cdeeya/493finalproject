@@ -58,7 +58,7 @@ Design for mobile first! -->
 			<p>This is the Quest List Page</p>
 			<!-- <p>DEBUG: before for</p> -->
 			<div>
-			<button id = "questList" v-for = "(quest, idx) in questList" v-on:click="SwitchDetails(); setRead(idx)">
+			<button id = "questList" v-for = "(quest, idx) in questList" v-on:click="SwitchDetails(idx); setRead(idx)">
 
 				<!-- <p>DEBUG: in for</p> -->
 				<!-- Note: need a way to click on quest and show more details-->
@@ -79,7 +79,7 @@ Design for mobile first! -->
 		<!-- Note: how to change this based on what quest was clicked on? -->
 		<div id = "QuestDetails" v-show="questDetailsPage">
 			<h1>Quest Details</h1>
-			<p>This shows the details of the quest you clicked on</p>
+			{{questList[questIndex].information}}
 		</div>
 
 		<div id="Map" v-show="mapPage" >
