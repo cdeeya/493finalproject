@@ -93,7 +93,7 @@ var test = new Vue({
       } // for
     },
 
-    questComplete: function(idx) {
+    questCompleted: function(idx) {
       // help please
       // console.log("in questComplete function")
       if (this.questList[idx].completed == true){
@@ -133,7 +133,16 @@ var test = new Vue({
 
     setRead: function(idx) {
       this.questList[idx].read = true;
-    }
+    },
+    setStarted: function(idx) {
+      this.questList[idx].started = true;
+    },
+    setCompleted: function(idx) {
+      this.questList[idx].completed = true;
+    },
+    setFavorited: function(idx) {
+      this.questList[idx].favorited = true;
+    },
 
   } // methods
 })

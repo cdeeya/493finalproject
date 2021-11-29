@@ -20,7 +20,44 @@
 </head>
 
 <!-- IMPORTANT:
-Design for mobile first! -->
+Design for mobile first! 
+
+PRIORITIZED TODO LIST:
+
+*DEGR
+add map updating into quest details
+add map + quest cross functionality
+
+*RAGER
+change quest captions to respective states
+- read quests = darker bg
+- complete quests need a checkmark or some cute pixel icon
+
+*HOGR
+Add favorited functionality and toggle to filter for favorites in quest list
+
+*SLYGER
+Add in progress/current/most prioritized task to profile/home page
+(just use questIndex because it should be updated with latest clicked task)
+(if no in progress quest, just directs to task list)
+
+*HOGR + RAGER
+Making UI look decent (CSS)
+
+Add in sounds
+
+add back button functionality
+
+Add EXP and item/reward/badge system 
+Integrate customizable avatar
+
+Consider adding more states 
+
+Add share system (share to friends/sns)
+
+add in animations
+
+-->
 
 <body>
 <div id='app'>
@@ -32,7 +69,6 @@ Design for mobile first! -->
 	<div id = "nav" class = "nav">
 		<nav>
 			<div class="nav-links">
-			<!-- need to add onclick, hide or show certain pages with vue or display block-->
 			<!-- can someone help make this vue functionality? -->
 			<a tabindex="1" href="#Profile" v-on:click="SwitchProfile()">
 				<img src="images/icons/profile.png" alt="Profile tab" /></a>
@@ -76,10 +112,23 @@ Design for mobile first! -->
 			</div>
 		</div>
 
+		<!-- how to add back button function? -->
 		<!-- Note: how to change this based on what quest was clicked on? -->
 		<div id = "QuestDetails" v-show="questDetailsPage">
-			<h1>Quest Details</h1>
-			{{questList[questIndex].information}}
+			<h1>Quest Details </h1>
+			<h2> {{questList[questIndex].name}} </h2>
+			<p>{{questList[questIndex].information}} </p>
+
+			<!-- v-show="{{questList[questIndex].started}}"   -->
+			<div v-show="!questStarted(questIndex)">
+				<button id = "startEnd" v-on:click="setStarted(questIndex)">Start Quest</button>
+			</div>
+			<div v-show="questStarted(questIndex)">
+				<button id = "startEnd" v-on:click="setCompleted(questIndex)">End Quest</button>
+			</div>
+			<!-- we need to change icons for completed quests, and change color for read/unread -->
+			
+
 		</div>
 
 		<div id="Map" v-show="mapPage" >
