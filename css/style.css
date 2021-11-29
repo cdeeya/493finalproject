@@ -107,7 +107,9 @@ body{
     background-color: #e1e9ee;
     width: 80%;
     height: 15%;
-    margin: 3%;
+    margin: auto;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
     padding: 4%;
 }
 .questEntry img {
