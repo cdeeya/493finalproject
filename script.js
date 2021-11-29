@@ -140,6 +140,9 @@ var test = new Vue({
     setCompleted: function(idx) {
       this.questList[idx].completed = true;
       this.questList[idx].started = false;
+
+      // TODO: do we want to change EXP values later?
+      this.expPts += 100;
     },
     toggleFavorited: function(idx) {
       this.questList[idx].favorited = !this.questList[idx].favorited;
