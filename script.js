@@ -7,6 +7,7 @@ var test = new Vue({
     questDetailsPage: false,
     mapPage: false,
     questIndex: 0,
+    expPts: 0,
 
 
     //quest object
