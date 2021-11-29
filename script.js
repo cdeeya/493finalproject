@@ -93,6 +93,7 @@ var test = new Vue({
       } // for
     },
 
+    // GETTERS
     questCompleted: function(idx) {
       // help please
       // console.log("in questComplete function")
@@ -103,7 +104,6 @@ var test = new Vue({
         return false;
       }
     },
-
     questRead: function(idx) {
       if (this.questList[idx].read == true) {
         return true;
@@ -112,7 +112,6 @@ var test = new Vue({
         return false;
       }
     },
-
     questStarted: function(idx) {
       if (this.questList[idx].started == true) {
         return true;
@@ -121,7 +120,6 @@ var test = new Vue({
         return false;
       }
     },
-
     questFavorited: function(idx) {
       if (this.questList[idx].favorited == true) {
         return true;
@@ -130,7 +128,7 @@ var test = new Vue({
         return false;
       }
     },
-
+    // SETTERS
     setRead: function(idx) {
       this.questList[idx].read = true;
     },
@@ -140,10 +138,12 @@ var test = new Vue({
     setCompleted: function(idx) {
       this.questList[idx].completed = true;
     },
-    setFavorited: function(idx) {
-      this.questList[idx].favorited = true;
+    toggleFavorited: function(idx) {
+      this.questList[idx].favorited = !this.questList[idx].favorited;
     },
+    
 
+    
   } // methods
 })
 

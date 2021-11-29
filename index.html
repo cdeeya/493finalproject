@@ -86,8 +86,9 @@ add in animations
 			<img id = "emote" src="images/happy.png" alt="happy emote" />
 			<br>
 			<img id = "profilePic" src="images/chara1.png" alt="profile image"/>
-			<a v-on:click="SwitchQuests()">
-				<button id="StartProfile">Start a Quest Here!</button></a>
+			<button id="StartProfile" v-on:click="SwitchQuests()">
+				<p>Start a Quest Here!</p>
+			</button>
 		</div>
 
 		<div id="Quests" v-show="questListPage">
@@ -95,21 +96,25 @@ add in animations
 			<p>This is the Quest List Page</p>
 			<!-- <p>DEBUG: before for</p> -->
 			<div>
-			<button id = "questList" v-for = "(quest, idx) in questList" v-on:click="SwitchDetails(idx); setRead(idx)">
+			<div id = "questList" v-for = "(quest, idx) in questList">
 
 				<!-- <p>DEBUG: in for</p> -->
 				<!-- Note: need a way to click on quest and show more details-->
-				<div class="row">
-			      {{questList[idx].name}}
+				<div class="questEntry">
+					<div class="questTitle">
+						<h2>{{questList[idx].name}}</h2>
+						<img v-if="!questFavorited(idx)" v-on:click="toggleFavorited(idx)" src="images/icons/unfavorited.png" alt="unfavorited" /></a>
+				  		<img v-else src="images/icons/favorited.png" v-on:click="toggleFavorited(idx)" alt="favorited" /></a>
+						<p class="questStatus" v-if="questRead(idx)">Quest Read</p>
+						<p v-else class="questStatus">New Quest!</p>
+					</div>
 				  <!--TODO: must change according to state (v-if)?-->
-
-				  <!-- help please -->
-				  <p id="questCaption" v-if="questRead(idx)">Quest Read</p>
-				  <p v-else id="questCaption">New Quest!</p>
-				  <!-- v-on:click: switch quest list to clicked-quest details-->
-
+				  	<button class="questBodyBtn" v-on:click="SwitchDetails(idx); setRead(idx)">
+						<p>Quest Details</p>
+						<!-- v-on:click: switch quest list to clicked-quest details-->
+					</button>
 				</div>
-			</button>
+			</div>
 			</div>
 		</div>
 
