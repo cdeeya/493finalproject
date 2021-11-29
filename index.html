@@ -86,8 +86,8 @@ add in animations
 			<img id = "emote" src="images/happy.png" alt="happy emote" />
 			<br>
 			<img id = "profilePic" src="images/chara1.png" alt="profile image"/>
-			
-			<button id="StartProfile">Start a Quest Here!</button>
+			<a v-on:click="SwitchQuests()">
+				<button id="StartProfile">Start a Quest Here!</button></a>
 		</div>
 
 		<div id="Quests" v-show="questListPage">
