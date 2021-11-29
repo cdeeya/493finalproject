@@ -108,8 +108,17 @@ body{
     text-align: center;
     margin-bottom: 30%;
 }
-#questList {
+.questList {
     background-color: #e1e9ee;
+    width: 80%;
+    height: 15%;
+    margin: auto;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+    padding: 4%;
+}
+.questListRead {
+    background-color: gainsboro;
     width: 80%;
     height: 15%;
     margin: auto;

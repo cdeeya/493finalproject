@@ -132,7 +132,6 @@ var test = new Vue({
     // SETTERS
     setRead: function(idx) {
       this.questList[idx].read = true;
-      document.getElementById("questList").style.backgroundColor = "gainsboro";
     },
     setStarted: function(idx) {
       this.questList[idx].started = true;

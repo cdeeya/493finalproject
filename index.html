@@ -32,7 +32,7 @@ it doesn't take up the entire space and only does after resizing)
 
 *RAGER
 change quest captions to respective states
-- read quests = darker bg
+---DONE--- read quests = darker bg
 - complete quests need a checkmark or some cute pixel icon
 
 *HOGR
@@ -50,8 +50,10 @@ Add in sounds
 
 add back button functionality
 
+*SLYGER
 Add EXP and item/reward/badge system
 Integrate customizable avatar
+add pop ups for "completed" screens
 
 Consider adding more states
 
@@ -97,9 +99,8 @@ add in animations
 		<div id="Quests" v-show="questListPage">
 			<h1> Quest List </h1>
 			<!-- <p>DEBUG: before for</p> -->
-			<div>
-			<div id = "questList" v-for = "(quest, idx) in questList">
-
+			<div v-for = "(quest, idx) in questList" 
+				v-bind:class = "[questRead(idx) ? 'questListRead' : 'questList']">
 				<!-- <p>DEBUG: in for</p> -->
 				<!-- Note: need a way to click on quest and show more details-->
 				<div class="questEntry">
@@ -108,32 +109,26 @@ add in animations
 						<img v-if="!questFavorited(idx)" v-on:click="toggleFavorited(idx)"
 							src="images/icons/unfavorited.png" alt="unfavorited" /></a>
 				  		<img v-else src="images/icons/favorited.png" v-on:click="toggleFavorited(idx)" alt="favorited" /></a>
-
-
+					<!-- toggle between the states? if started or completed, do not show anything else before that.  -->
+					<!-- we need to change icons for completed quests -->
 						<p class="questStatus" v-show="questStarted(idx)">Quest In-Progress</p>
 						<p class="questStatus" v-show="questCompleted(idx)">Quest Completed!</p>
 						<p v-show="!questRead(idx)" class="questStatus">New Quest!</p>
-
-<!-- toggle between the states? if started or completed, do not show anything else before that.  -->
-
 					</div>
-				  <!--TODO: must change according to state (v-if)?-->
+				  	<!--TODO: must change according to state (v-if)?-->
 				  	<button class="questBodyBtn" v-on:click="SwitchDetails(idx); setRead(idx)">
 						<p>Quest Details</p>
 						<!-- v-on:click: switch quest list to clicked-quest details-->
 					</button>
 				</div>
 			</div>
-			</div>
 		</div>
 
 		<!-- how to add back button function? -->
-		<!-- Note: how to change this based on what quest was clicked on? -->
 		<div id = "QuestDetails" v-show="questDetailsPage">
 			<h1>Quest Details </h1>
 			<h2> {{questList[questIndex].name}} </h2>
 			<p>{{questList[questIndex].information}} </p>
-
 			<!-- v-show="{{questList[questIndex].started}}"   -->
 			<div v-show="!questStarted(questIndex)">
 				<button id = "startEnd" v-on:click="setStarted(questIndex)">Start Quest</button>
@@ -141,9 +136,6 @@ add in animations
 			<div v-show="questStarted(questIndex)">
 				<button id = "startEnd" v-on:click="setCompleted(questIndex)">End Quest</button>
 			</div>
-			<!-- we need to change icons for completed quests, and change color for read/unread -->
-
-
 		</div>
 
 		<div id="Map" v-show="mapPage" >
