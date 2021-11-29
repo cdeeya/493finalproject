@@ -58,7 +58,7 @@ Design for mobile first! -->
 			<p>This is the Quest List Page</p>
 			<!-- <p>DEBUG: before for</p> -->
 			<div>
-			<button id = "questList" v-for = "(quest, idx) in questList" v-on:click="SwitchDetails()">
+			<button id = "questList" v-for = "(quest, idx) in questList" v-on:click="SwitchDetails(); setRead(idx)">
 
 				<!-- <p>DEBUG: in for</p> -->
 				<!-- Note: need a way to click on quest and show more details-->
@@ -67,10 +67,10 @@ Design for mobile first! -->
 				  <!--TODO: must change according to state (v-if)?-->
 
 				  <!-- help please -->
-				  <p v-if="questComplete(idx)">Quest Completed</p>
+				  <p id="questCaption" v-if="questRead(idx)">Quest Read</p>
 				  <p v-else id="questCaption">New Quest!</p>
 				  <!-- v-on:click: switch quest list to clicked-quest details-->
-	
+
 				</div>
 			</button>
 			</div>

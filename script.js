@@ -98,6 +98,37 @@ var test = new Vue({
       else{
         return false;
       }
+    },
+
+    questRead: function(idx) {
+      if (this.questList[idx].read == true) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    },
+
+    questStarted: function(idx) {
+      if (this.questList[idx].started == true) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    },
+
+    questFavorited: function(idx) {
+      if (this.questList[idx].favorited == true) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    },
+
+    setRead: function(idx) {
+      this.questList[idx].read = true;
     }
 
   } // methods
