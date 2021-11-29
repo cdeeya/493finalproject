@@ -27,6 +27,8 @@ PRIORITIZED TODO LIST:
 *DEGR
 add map updating into quest details
 add map + quest cross functionality
+(something weird happens when we just reload page and go to map view: 
+it doesn't take up the entire space and only does after resizing)
 
 *RAGER
 change quest captions to respective states
@@ -34,7 +36,8 @@ change quest captions to respective states
 - complete quests need a checkmark or some cute pixel icon
 
 *HOGR
-Add favorited functionality and toggle to filter for favorites in quest list
+---DONE--- Add favorited functionality 
+toggle to filter for favorites in quest list
 
 *SLYGER
 Add in progress/current/most prioritized task to profile/home page
@@ -82,18 +85,16 @@ add in animations
 	<div id = "content" >
 		<div id="Profile" v-show="profilePage" >
 			<h1> Profile </h1>
-			<p>This is the Profile Page</p>
 			<img id = "emote" src="images/happy.png" alt="happy emote" />
 			<br>
 			<img id = "profilePic" src="images/chara1.png" alt="profile image"/>
 			<button id="StartProfile" v-on:click="SwitchQuests()">
-				<p>Start a Quest Here!</p>
+				<h2>Start a Quest Here!</h2>
 			</button>
 		</div>
 
 		<div id="Quests" v-show="questListPage">
 			<h1> Quest List </h1>
-			<p>This is the Quest List Page</p>
 			<!-- <p>DEBUG: before for</p> -->
 			<div>
 			<div id = "questList" v-for = "(quest, idx) in questList">
@@ -103,7 +104,8 @@ add in animations
 				<div class="questEntry">
 					<div class="questTitle">
 						<h2>{{questList[idx].name}}</h2>
-						<img v-if="!questFavorited(idx)" v-on:click="toggleFavorited(idx)" src="images/icons/unfavorited.png" alt="unfavorited" /></a>
+						<img v-if="!questFavorited(idx)" v-on:click="toggleFavorited(idx)" 
+							src="images/icons/unfavorited.png" alt="unfavorited" /></a>
 				  		<img v-else src="images/icons/favorited.png" v-on:click="toggleFavorited(idx)" alt="favorited" /></a>
 						<p class="questStatus" v-if="questRead(idx)">Quest Read</p>
 						<p v-else class="questStatus">New Quest!</p>
@@ -139,7 +141,6 @@ add in animations
 
 		<div id="Map" v-show="mapPage" >
 			<h1> Map View </h1>
-			<p>This is Map View Page</p>
 			<div id="map"></div>
 		</div>
 	</div>

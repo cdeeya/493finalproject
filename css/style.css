@@ -1,13 +1,14 @@
 h1 {
+    font-size: 4.5vw;
     padding-top: 3%;
     margin: 1%;
 }
 h2 {
-    font-size: .85em;
+    font-size: 3vw;
     margin: 1%;
 }
 p {
-    font-size: .8em;
+    font-size: 2.5vw;
     margin: 3%;
 }
 /* BODY */
