@@ -5,11 +5,16 @@
 // AUDIO
 var buttonAudio = new Audio("audio/buttonclick.wav");
 var endQuestAudio = new Audio("audio/victory.wav");
+var resetAudio = new Audio("audio/buttonReset.wav");
 function playTap() {
   buttonAudio.play()
 }
 function playEnd() {
   endQuestAudio.play();
+}
+
+function playRestart() {
+  resetAudio.play();
 }
 
 // VUE
