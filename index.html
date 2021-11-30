@@ -69,7 +69,8 @@ add animations
 	<div id = "content" >
 		<div id="Profile" v-show="profilePage" >
 			<h1> Profile </h1>
-			<img id = "emote" src="images/happy.png" alt="happy emote" />
+			<img id = "emote" v-if="!emote" src="images/happy.png" v-on:click="toggleEmote()" alt="happy emote" />
+			<img id = "emote" v-else src="images/love.png" v-on:click="toggleEmote()" alt="heart emote" />
 			<br>
 			<img id = "profilePic" src="images/chara1.png" alt="profile image"/>
 			<h1 id="levelLabel"> LEVEL {{currLevel}}</h1>

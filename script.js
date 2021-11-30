@@ -26,6 +26,7 @@ var test = new Vue({
     questListPage: false,
     questDetailsPage: false,
     mapPage: false,
+    emote: false,
     questIndex: 0,
     currLevel: 1,
     expPts: 0,
@@ -250,6 +251,9 @@ var test = new Vue({
       this.questList[idx].favorited = !this.questList[idx].favorited;
     },
 
+    toggleEmote: function() {
+      this.emote = !this.emote;
+    },
 
 
   } // methods
