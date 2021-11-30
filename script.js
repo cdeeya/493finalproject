@@ -27,7 +27,7 @@ var test = new Vue({
     questDetailsPage: false,
     mapPage: false,
     questIndex: 0,
-    currLevel: 0,
+    currLevel: 1,
     expPts: 0,
     // profileQuest: "Start a Quest!",
     startedExists: false,
@@ -77,7 +77,6 @@ var test = new Vue({
       this.profilePage = false;
       this.questDetailsPage = false;
     },
-
     SwitchDetails: function(idx) {
       this.questIndex = idx;
       console.log(this.questIndex);
@@ -166,6 +165,11 @@ var test = new Vue({
         return false;
       }
     },
+    /* getExp: function() {
+      console.log("here")
+      console.log(this.expPts);
+    }, */
+
     // SETTERS
     setRead: function(idx) {
       this.questList[idx].read = true;

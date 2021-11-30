@@ -30,15 +30,14 @@ add map + quest cross functionality
 (something weird happens when we just reload page and go to map view:
 it doesn't take up the entire space and only does after resizing)
 
-*HOGR
 toggle to filter for favorites in quest list
 
 add back button functionality
 
-Add progress bar for EXP
+Fix progress bar for EXP
 item/reward/badge system
 Integrate customizable avatar
-pop ups for "completed" screens
+pop ups for "completed" screens -- confirm we can use this
 
 Add share system (share to friends/sns)
 
@@ -76,7 +75,7 @@ add animations
 			<h1 id="levelLabel"> LEVEL {{currLevel}}</h1>
 			<div id="exp">
 				<h1 id="expLabel">{{expPts}} EXP </h1>
-				<progress id="expBar" value="32" max="100"> 32% </progress>
+				<progress id="expBar" value="100" max="400"> {{expPts}}% </progress>
 			</div>
 			<button id="StartProfile" onclick= playTap()  v-on:click="SwitchQuests()">
 				<h2 v-if="!startedExists">Start a Quest!</h2>
