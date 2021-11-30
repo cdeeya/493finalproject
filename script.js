@@ -27,7 +27,6 @@ var test = new Vue({
     startedExists: false,
 
 
-
     //quest object
     questList: [
       {completed: false, started: false, read: false, favorited: false, name: "Bob and Betty Beyster Building Bake Off (BBBBB)", information: "Draw something funny on the board in room 1670 BBB"},
@@ -102,6 +101,7 @@ var test = new Vue({
     //     this.questList[1].information = "Draw something funny on the board in room 1670 BBB";
     // },
 
+    /*
     checkQuests: function() {
       // console.log("this checks quest bool values")
       for (i = 0; i < this.questList.length; ++i){
@@ -128,6 +128,7 @@ var test = new Vue({
 
       // TODO: if no quests have been started, "start a Quest" and go to quest page
     },
+    */
 
     // GETTERS
     questCompleted: function(idx) {
