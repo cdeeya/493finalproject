@@ -132,6 +132,7 @@ body{
     max-height: 5vh;
     right: 0;
     float: left;
+    margin: 1%;
 }
 .questStatus {
     float: right;
@@ -146,6 +147,8 @@ body{
     text-decoration: none;
     display: inline-block;
 }
+
+
 
 /* QUEST DETAILS */
 #QuestDetails {

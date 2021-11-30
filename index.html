@@ -99,7 +99,7 @@ add in animations
 		<div id="Quests" v-show="questListPage">
 			<h1> Quest List </h1>
 			<!-- <p>DEBUG: before for</p> -->
-			<div v-for = "(quest, idx) in questList" 
+			<div v-for = "(quest, idx) in questList"
 				v-bind:class = "[questRead(idx) ? 'questListRead' : 'questList']">
 				<!-- <p>DEBUG: in for</p> -->
 				<!-- Note: need a way to click on quest and show more details-->
@@ -113,6 +113,7 @@ add in animations
 					<!-- we need to change icons for completed quests -->
 						<p class="questStatus" v-show="questStarted(idx)">Quest In-Progress</p>
 						<p class="questStatus" v-show="questCompleted(idx)">Quest Completed!</p>
+						<img v-if="questCompleted(idx)" src="images/icons/pixel_check.png" alt="checkmark"/></a>
 						<p v-show="!questRead(idx)" class="questStatus">New Quest!</p>
 					</div>
 				  	<!--TODO: must change according to state (v-if)?-->
