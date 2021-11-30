@@ -1,4 +1,10 @@
+// import Vue from "vue"
+// import VueSimpleAlert from "vue-simple-alert";
+// Vue.use(VueSimpleAlert);
+
 var test = new Vue({
+
+
   el: '#app',
   data: {
     // tracking status of page displaying
@@ -142,6 +148,8 @@ var test = new Vue({
 
       // TODO: do we want to change EXP values later?
       this.expPts += 100;
+
+      alert("Congrats, you finished a quest! You've earned 100 EXP Points");
     },
     toggleFavorited: function(idx) {
       this.questList[idx].favorited = !this.questList[idx].favorited;
