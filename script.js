@@ -14,6 +14,7 @@ var test = new Vue({
     mapPage: false,
     questIndex: 0,
     expPts: 0,
+    profileQuest: "Start a Quest!",
 
 
     //quest object
@@ -91,13 +92,17 @@ var test = new Vue({
     // },
 
     checkQuests: function() {
-      console.log("this checks quest bool values")
-      for (i = 0; i < questList.length; ++i){
-        console.log("this is inside checkQuests() for loop")
-        // TODO: check + change(?) bool values of completed, started, read, favorited
-        // testing:
-        questList[0].completed = true;
+      // console.log("this checks quest bool values")
+      for (i = 0; i < this.questList.length; ++i){
+      //   // console.log("this is inside checkQuests() for loop")
+      //   // TODO: check + change(?) bool values of completed, started, read, favorited
+      //   // testing:
+      //   // questList[0].completed = true;
+        if (this.questList[i].started == true){
+          return true;
+        }
       } // for
+      return false;
     },
 
     // GETTERS
