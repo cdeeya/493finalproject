@@ -183,6 +183,13 @@ var test = new Vue({
       // alert("Congrats, you finished a quest! You've earned 100 EXP Points");
       Swal.fire({title: "Congrats, you finished a quest! You've earned 100 EXP Points",});
     },
+
+    setRestart: function(idx) {
+      this.questList[idx].read = true;
+      this.questList[idx].started = true;
+      this.questList[idx].completed = false;
+    },
+
     toggleFavorited: function(idx) {
       this.questList[idx].favorited = !this.questList[idx].favorited;
     },
