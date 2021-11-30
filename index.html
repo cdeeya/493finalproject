@@ -30,9 +30,6 @@ add map + quest cross functionality
 (something weird happens when we just reload page and go to map view:
 it doesn't take up the entire space and only does after resizing)
 
-*RAGER
-fix completed quest bug: add a state to "restart"?
-
 *HOGR
 toggle to filter for favorites in quest list
 
@@ -76,7 +73,11 @@ add animations
 			<img id = "emote" src="images/happy.png" alt="happy emote" />
 			<br>
 			<img id = "profilePic" src="images/chara1.png" alt="profile image"/>
-			<h1 id="expLabel">{{expPts}} EXP</h1>
+			<h1 id="levelLabel"> LEVEL {{currLevel}}</h1>
+			<div id="exp">
+				<h1 id="expLabel">{{expPts}} EXP </h1>
+				<progress id="expBar" value="32" max="100"> 32% </progress>
+			</div>
 			<button id="StartProfile" onclick= playTap()  v-on:click="SwitchQuests()">
 				<h2 v-if="!startedExists">Start a Quest!</h2>
 				<h2 v-else="startedExists">{{startedQuests[0].name}}</h2>

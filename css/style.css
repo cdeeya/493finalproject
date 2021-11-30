@@ -89,9 +89,8 @@ body{
     max-height: 60vh;
 }
 
-#expLabel {
-    padding-bottom: 5%;
-    padding-top: 0%;
+#exp, #levelLabel  {
+    padding: 0;
 }
 
 #StartProfile {

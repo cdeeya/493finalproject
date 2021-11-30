@@ -27,10 +27,11 @@ var test = new Vue({
     questDetailsPage: false,
     mapPage: false,
     questIndex: 0,
+    currLevel: 0,
     expPts: 0,
-    profileQuest: "Start a Quest!",
-    startedQuests: [],
+    // profileQuest: "Start a Quest!",
     startedExists: false,
+    startedQuests: [],
 
     //quest object
     questList: [
