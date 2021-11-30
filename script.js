@@ -1,6 +1,8 @@
 // import Vue from "vue"
 // import VueSimpleAlert from "vue-simple-alert";
 // Vue.use(VueSimpleAlert);
+
+// AUDIO
 var buttonAudio = new Audio("audio/buttonclick.wav");
 var endQuestAudio = new Audio("audio/victory.wav");
 function playTap() {
@@ -10,8 +12,8 @@ function playEnd() {
   endQuestAudio.play();
 }
 
+// VUE
 var test = new Vue({
-
   el: '#app',
   data: {
     // tracking status of page displaying
