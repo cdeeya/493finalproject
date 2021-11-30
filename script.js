@@ -23,7 +23,8 @@ var test = new Vue({
     questIndex: 0,
     expPts: 0,
     profileQuest: "Start a Quest!",
-
+    startedQuests: [],
+    startedExists: false,
 
 
 
@@ -169,10 +170,19 @@ var test = new Vue({
     },
     setStarted: function(idx) {
       this.questList[idx].started = true;
+      this.startedQuests.push(this.questList[idx]);
+      console.log(this.startedQuests);
+      this.startedExists = true;
     },
     setCompleted: function(idx) {
       this.questList[idx].completed = true;
       this.questList[idx].started = false;
+
+      this.startedQuests = this.startedQuests.filter(e => e.name !== this.questList[idx].name)
+      console.log(this.startedQuests);
+      if (this.startedQuests.length==0) {
+        this.startedExists = false;
+      }
 
       // TODO: do we want to change EXP values later?
       this.expPts += 100;

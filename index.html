@@ -91,8 +91,12 @@ add in animations
 			<br>
 			<img id = "profilePic" src="images/chara1.png" alt="profile image"/>
 			<h1 id="expLabel">{{expPts}} EXP</h1>
-			<button id="StartProfile" v-on:click="checkQuests()">
+			<!-- <button id="StartProfile" v-on:click="checkQuests()">
 				<h2>{{profileQuest}}</h2>
+			</button> -->
+			<button id="StartProfile" v-on:click="SwitchQuests()">
+				<h2 v-if="!startedExists">Start a Quest!</h2>
+				<h2 v-else="startedExists">{{startedQuests[0].name}}</h2>
 			</button>
 		</div>
 
