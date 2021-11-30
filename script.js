@@ -99,10 +99,23 @@ var test = new Vue({
       //   // testing:
       //   // questList[0].completed = true;
         if (this.questList[i].started == true){
-          return true;
+          this.questIndex = i;
+          this.profileQuest = this.questList[i].name;
+          this.profilePage = false;
+          this.mapPage = false;
+          this.questDetailsPage = true;
+          this.questListPage = false;
+          break;
+        }
+        else{
+          this.profilePage = false;
+          this.mapPage = false;
+          this.questDetailsPage = false;
+          this.questListPage = true;
         }
       } // for
-      return false;
+
+      // TODO: if no quests have been started, "start a Quest" and go to quest page
     },
 
     // GETTERS

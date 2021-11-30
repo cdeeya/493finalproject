@@ -76,7 +76,7 @@ add in animations
 			<!-- can someone help make this vue functionality? -->
 			<a tabindex="1" href="#Profile" v-on:click="SwitchProfile()">
 				<img src="images/icons/profile.png" alt="Profile tab" /></a>
-			<a tabindex="1" href="#Quests" v-on:click="SwitchQuests(); checkQuests()">
+			<a tabindex="1" href="#Quests" v-on:click="SwitchQuests() ">
 				<img src="images/icons/quests.png" alt="Quests tab" /></a>
 			<a tabindex="1" href="#Map" v-on:click="SwitchMap()">
 				<img src="images/icons/map.png" alt="Map tab" /></a>
@@ -91,7 +91,7 @@ add in animations
 			<br>
 			<img id = "profilePic" src="images/chara1.png" alt="profile image"/>
 			<h1 id="expLabel">{{expPts}} EXP</h1>
-			<button id="StartProfile" v-on:click="SwitchQuests()">
+			<button id="StartProfile" v-on:click="checkQuests()">
 				<h2>{{profileQuest}}</h2>
 			</button>
 		</div>
