@@ -158,6 +158,8 @@ body{
 
 #startEnd {
     background-color: gainsboro;
+    position: fixed;
+    
     font-family: VT323;
     padding: 5px;
     margin-top: 1.5%;

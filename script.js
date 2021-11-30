@@ -180,7 +180,8 @@ var test = new Vue({
       // TODO: do we want to change EXP values later?
       this.expPts += 100;
       // move this to a stylized modal later
-      alert("Congrats, you finished a quest! You've earned 100 EXP Points");
+      // alert("Congrats, you finished a quest! You've earned 100 EXP Points");
+      Swal.fire({title: "Congrats, you finished a quest! You've earned 100 EXP Points",});
     },
     toggleFavorited: function(idx) {
       this.questList[idx].favorited = !this.questList[idx].favorited;
