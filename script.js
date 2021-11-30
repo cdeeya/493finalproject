@@ -35,10 +35,10 @@ var test = new Vue({
 
     //quest object
     questList: [
-      {completed: false, started: false, read: false, favorited: false, name: "Bob and Betty Beyster Building Bake Off (BBBBB)", information: "Draw something funny on the board in room 1670 BBB"},
-      {completed: false, started: false, read: false, favorited: false, name: "Thanks U(I) for the Memories", information: "High-five and thank a 493 IA in room 1670 BBB"},
-      {completed: false, started: false, read: false, favorited: false, name: "Art at the UMMA", information: "Take three photos of art pieces you enjoyed"},
-      {completed: false, started: false, read: false, favorited: false, name: "Diag Dinner", information: "Catch 3 campus squirrels"},
+      {completed: false, started: false, read: false, favorited: false, index: 0, name: "Bob and Betty Beyster Building Bake Off (BBBBB)", information: "Draw something funny on the board in room 1670 BBB"},
+      {completed: false, started: false, read: false, favorited: false, index: 1, name: "Thanks U(I) for the Memories", information: "High-five and thank a 493 IA in room 1670 BBB"},
+      {completed: false, started: false, read: false, favorited: false, index: 2, name: "Art at the UMMA", information: "Take three photos of art pieces you enjoyed"},
+      {completed: false, started: false, read: false, favorited: false, index: 3, name: "Diag Dinner", information: "Catch 3 campus squirrels"},
 
     ],
     quest: {
@@ -82,6 +82,14 @@ var test = new Vue({
       this.questIndex = idx;
       console.log(this.questIndex);
       console.log("this changes the page to Quest Details page")
+      this.questListPage = false;
+      this.profilePage = false;
+      this.mapPage = false;
+      this.questDetailsPage = true;
+    },
+
+    SwitchDetailsProfile: function() {
+      this.questIndex = this.startedQuests[0].index;
       this.questListPage = false;
       this.profilePage = false;
       this.mapPage = false;

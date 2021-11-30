@@ -78,10 +78,12 @@ add animations
 				<h1 id="expLabel">{{expPts}} EXP </h1>
 				<progress id="expBar" value="32" max="100"> 32% </progress>
 			</div>
-			<button id="StartProfile" onclick= playTap()  v-on:click="SwitchQuests()">
+			<!-- <button id="StartProfile" onclick= playTap()  v-on:click="SwitchQuests()">
 				<h2 v-if="!startedExists">Start a Quest!</h2>
 				<h2 v-else="startedExists">{{startedQuests[0].name}}</h2>
-			</button>
+			</button> -->
+			<button id="StartProfile" onclick=playTap() v-if="!startedExists" v-on:click="SwitchQuests()">Start a Quest!</button>
+			<button id="StartProfile" onclick=playTap() v-if="startedExists" v-on:click="SwitchDetailsProfile()">{{startedQuests[0].name}}</button>
 		</div>
 
 		<div id="Quests"  v-show="questListPage">
