@@ -117,13 +117,19 @@ add animations
 			<p>{{questList[questIndex].information}} </p>
 			<!-- v-show="{{questList[questIndex].started}}"   -->
 			<div v-show="!questStarted(questIndex)">
-				<button id = "startEnd"  onclick= playTap()  v-on:click="setStarted(questIndex)">Start Quest</button>
+				<button id = "startEnd"  onclick= playTap()  v-on:click="setStarted(questIndex)">
+					<p>Start Quest</p>
+				</button>
 			</div>
 			<div v-show="questStarted(questIndex)">
-				<button id = "startEnd" onclick = playEnd() v-on:click="setCompleted(questIndex)">End Quest</button>
+				<button id = "startEnd" onclick = playEnd() v-on:click="setCompleted(questIndex)">
+					<p>End Quest</p>
+				</button>
 			</div>
 			<div v-show="questCompleted(questIndex)">
-					<button id = "startEnd" onclick = playRestart() v-on:click="setRestart(questIndex)">Restart Quest</button>
+				<button id = "startEnd" onclick = playRestart() v-on:click="setRestart(questIndex)">
+					<p>Restart Quest</p>
+				</button>
 			</div>
 		</div>
 
