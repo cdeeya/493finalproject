@@ -1,6 +1,14 @@
 // import Vue from "vue"
 // import VueSimpleAlert from "vue-simple-alert";
 // Vue.use(VueSimpleAlert);
+var buttonAudio = new Audio("audio/buttonclick.wav");
+var endQuestAudio = new Audio("audio/victory.wav");
+function playTap() {
+  buttonAudio.play()
+}
+function playEnd() {
+  endQuestAudio.play();
+}
 
 var test = new Vue({
 
@@ -15,6 +23,8 @@ var test = new Vue({
     questIndex: 0,
     expPts: 0,
     profileQuest: "Start a Quest!",
+
+
 
 
     //quest object
@@ -175,8 +185,10 @@ var test = new Vue({
 
 
 
+
   } // methods
 })
+
 
 
 // FOR MAPBOX

@@ -117,7 +117,7 @@ add in animations
 						<p v-show="!questRead(idx)" class="questStatus">New Quest!</p>
 					</div>
 				  	<!--TODO: must change according to state (v-if)?-->
-				  	<button class="questBodyBtn" v-on:click="SwitchDetails(idx); setRead(idx)">
+				  	<button class="questBodyBtn" onclick = playTap() v-on:click="SwitchDetails(idx); setRead(idx)">
 						<p>Quest Details</p>
 						<!-- v-on:click: switch quest list to clicked-quest details-->
 					</button>
@@ -135,7 +135,7 @@ add in animations
 				<button id = "startEnd" v-on:click="setStarted(questIndex)">Start Quest</button>
 			</div>
 			<div v-show="questStarted(questIndex)">
-				<button id = "startEnd" v-on:click="setCompleted(questIndex)">Complete Quest</button>
+				<button id = "startEnd" onclick = playEnd() v-on:click="setCompleted(questIndex)">End Quest</button>
 			</div>
 		</div>
 
