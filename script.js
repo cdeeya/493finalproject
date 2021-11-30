@@ -12,7 +12,6 @@ function playEnd() {
 
 var test = new Vue({
 
-
   el: '#app',
   data: {
     // tracking status of page displaying
@@ -25,7 +24,6 @@ var test = new Vue({
     profileQuest: "Start a Quest!",
     startedQuests: [],
     startedExists: false,
-
 
     //quest object
     questList: [
@@ -86,11 +84,8 @@ var test = new Vue({
     //initialize our array with these empty quest objects
     //just straight hard code in the quest information
     // fillQuestInfo: function() {
-
     //   // TODO: how to initialize quest so v-for works???
-
     //   //quest #1
-
     //     this.questList.push = new quest; //look into initializing array with this object
     //     this.questList[0].name = "Bob and Betty Beyster Building Bake Off (BBBBB)";
     //     this.questList[0].information = "Draw something funny on the board in room 1670 BBB";
@@ -125,8 +120,6 @@ var test = new Vue({
           this.questListPage = true;
         }
       } // for
-
-      // TODO: if no quests have been started, "start a Quest" and go to quest page
     },
     */
 
@@ -184,16 +177,14 @@ var test = new Vue({
       if (this.startedQuests.length==0) {
         this.startedExists = false;
       }
-
       // TODO: do we want to change EXP values later?
       this.expPts += 100;
-
+      // move this to a stylized modal later
       alert("Congrats, you finished a quest! You've earned 100 EXP Points");
     },
     toggleFavorited: function(idx) {
       this.questList[idx].favorited = !this.questList[idx].favorited;
     },
-
 
 
 
