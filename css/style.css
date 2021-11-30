@@ -13,6 +13,10 @@ p {
     font-size: 4.5vw;
     margin: 3%;
 }
+span {
+  font-family: VT323;
+  color: #868BFE;
+}
 /* BODY */
 body{
     /* same font as HW2 */
@@ -179,5 +183,3 @@ body{
     width: 100vw;
     height: 90vh;
 }
-
-

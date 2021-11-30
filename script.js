@@ -35,12 +35,44 @@ var test = new Vue({
 
     //quest object
     questList: [
-      {completed: false, started: false, read: false, favorited: false, index: 0, name: "Bob and Betty Beyster Building Bake Off (BBBBB)", information: "Draw something funny on the board in room 1670 BBB"},
-      {completed: false, started: false, read: false, favorited: false, index: 1, name: "Thanks U(I) for the Memories", information: "High-five and thank a 493 IA in room 1670 BBB"},
-      {completed: false, started: false, read: false, favorited: false, index: 2, name: "Art at the UMMA", information: "Take three photos of art pieces you enjoyed"},
-      {completed: false, started: false, read: false, favorited: false, index: 3, name: "Diag Dinner", information: "Catch 3 campus squirrels"},
+            {completed: false,
+             started: false,
+             read: false,
+             favorited: false,
+             name: "Bob and Betty Beyster Building Bake Off (BBBBB)",
+             information: "Draw something funny on the board in room 1670 BBB",
+             long: -83.71626555919647,
+             lat: 42.29294516616928
+           },
+            {completed: false,
+             started: false,
+             read: false,
+             favorited: false,
+             name: "Thanks U(I) for the Memories",
+             information: "High-five and thank a 493 IA in room 1670 BBB",
+             long: -83.71626555919647,
+             lat: 42.29294516616928
+          },
+            {completed: false,
+             started: false,
+             read: false,
+             favorited: false,
+             name: "Art at the UMMA",
+             information: "Take three photos of art pieces you enjoyed",
+             long: -83.73983681201935,
+             lat: 42.27559012188965
+          },
+            {completed: false,
+             started: false,
+             read: false,
+             favorited: false,
+             name: "Diag Dinner",
+             information: "Catch 3 campus squirrels",
+             long: -83.73821139335631,
+             lat: 42.276892015270626,
+           },
 
-    ],
+          ],
     quest: {
       completed: false,
       started: false,
@@ -219,19 +251,47 @@ var test = new Vue({
   } // methods
 })
 
-
-
-// FOR MAPBOX
+// mapbox
 mapboxgl.accessToken = 'pk.eyJ1IjoidGVhbS1ndXp6aWUiLCJhIjoiY2t2aWFyaXhhY2kyMDJ3bnpvZzJuZTZ5aCJ9.JTDWinEddb4DDs-Rka2G6A';
-	const map = new mapboxgl.Map({
-	container: 'map', // container ID
-	style: 'mapbox://styles/team-guzzie/ckviauzayahyg14pcmcsenbvt/draft', // style URL
-	center: [-83.7430, 42.2808], // starting position [lng, lat]
-	zoom: 13 // starting zoom
-	});
+$(document).ready(function() {
+    console.log( "ready!" );
+    navigator.geolocation.getCurrentPosition((position) => {
+      var start_lat = position.coords.latitude;
+      var start_long = position.coords.longitude;
+      console.log(start_long, start_lat); //test api with a console log
 
-	const popup = new mapboxgl.Popup({ closeOnClick: false })
-	.setLngLat([-83.7376137162, 42.2717655796])
-	.setHTML('<p>Objective: UMMA</p>')
-	.setMaxWidth("50px")
-	.addTo(map);
+      const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/team-guzzie/ckviauzayahyg14pcmcsenbvt/draft', // style URL
+        center: [start_long, start_lat], // starting position [lng, lat]
+        zoom: 13 // starting zoom
+      });
+
+      const marker = new mapboxgl.Marker({
+        color: "#868BFE"
+      })
+        .setLngLat([start_long, start_lat])
+        .setPopup(new mapboxgl.Popup().setHTML("<span>Current Location!</span>"))
+        .addTo(map);
+
+      const marker_bbb = new mapboxgl.Marker()
+        .setLngLat([-83.71726555919647, 42.29294516616900])
+        .setPopup(new mapboxgl.Popup().setHTML("<span>Bob and Betty Beyster Building Bake Off (BBBBB)</span>"))
+        .addTo(map);
+
+      const marker_bbb2 = new mapboxgl.Marker()
+        .setLngLat([-83.71626555919647, 42.29294516616928])
+        .setPopup(new mapboxgl.Popup().setHTML("<span>Thanks U(I) for the Memories</span>"))
+        .addTo(map);
+
+      const marker_umma = new mapboxgl.Marker()
+        .setLngLat([-83.73983681201935, 42.27559012188965])
+        .setPopup(new mapboxgl.Popup().setHTML("<span>Art at the UMMA!</span>"))
+        .addTo(map);
+
+      const marker_diag = new mapboxgl.Marker()
+        .setLngLat([-83.73821139335631, 42.276892015270626])
+        .setPopup(new mapboxgl.Popup().setHTML("<span>Diag Dinner</span>"))
+        .addTo(map);
+    })
+})
