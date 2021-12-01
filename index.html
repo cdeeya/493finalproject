@@ -121,6 +121,7 @@ add animations
 				<button id = "startEnd"  onclick= playTap()  v-on:click="setStarted(questIndex)">
 					<p>Start Quest</p>
 				</button>
+				<div id="questMap"></div>
 			</div>
 			<div v-show="questStarted(questIndex)">
 				<button id = "startEnd" onclick = playEnd() v-on:click="setCompleted(questIndex)">
@@ -134,9 +135,13 @@ add animations
 			</div>
 		</div>
 
-		<div id="Map" v-show="mapPage" >
+		<div id="Map" v-show="mapPage" v-on:click="add_marker" >
 			<h1> Map View </h1>
-			<div id="map"></div>
+			<template>
+			  <div id="map">
+				</div>
+
+			</template>
 		</div>
 	</div>
 

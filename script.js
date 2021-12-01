@@ -20,76 +20,90 @@ function playRestart() {
 // VUE
 var test = new Vue({
   el: '#app',
-  data: {
-    // tracking status of page displaying
-    profilePage: true,
-    questListPage: false,
-    questDetailsPage: false,
-    mapPage: false,
-    emote: false,
-    questIndex: 0,
-    currLevel: 1,
-    expPts: 0,
-    // profileQuest: "Start a Quest!",
-    startedExists: false,
-    startedQuests: [],
+  data () {
+    return {
+      accessToken:'pk.eyJ1IjoidGVhbS1ndXp6aWUiLCJhIjoiY2t2aWFyaXhhY2kyMDJ3bnpvZzJuZTZ5aCJ9.JTDWinEddb4DDs-Rka2G6A',
+      test_start_long: 0,
+      test_start_lat: 0,
+      // tracking status of page displaying
+      profilePage: true,
+      questListPage: false,
+      questDetailsPage: false,
+      mapPage: false,
+      emote: false,
+      questIndex: 0,
+      currLevel: 1,
+      expPts: 0,
+      // profileQuest: "Start a Quest!",
+      startedExists: false,
+      startedQuests: [],
+      test_map: "",
 
-    //quest object
-    questList: [
-            {completed: false,
-             started: false,
-             read: false,
-             favorited: false,
-             index: 0,
-             name: "Bob and Betty Beyster Building Bake Off (BBBBB)",
-             information: "Draw something funny on the board in room 1670 BBB",
-             long: -83.71626555919647,
-             lat: 42.29294516616928
-           },
-            {completed: false,
-             started: false,
-             read: false,
-             favorited: false,
-             index: 1,
-             name: "Thanks U(I) for the Memories",
-             information: "High-five and thank a 493 IA in room 1670 BBB",
-             long: -83.71626555919647,
-             lat: 42.29294516616928
-          },
-            {completed: false,
-             started: false,
-             read: false,
-             favorited: false,
-             index: 2, 
-             name: "Art at the UMMA",
-             information: "Take three photos of art pieces you enjoyed",
-             long: -83.73983681201935,
-             lat: 42.27559012188965
-          },
-            {completed: false,
-             started: false,
-             read: false,
-             favorited: false,
-             index: 3,
-             name: "Diag Dinner",
-             information: "Catch 3 campus squirrels",
-             long: -83.73821139335631,
-             lat: 42.276892015270626,
-           },
+      //quest object
+      questList: [
+              {completed: false,
+               started: false,
+               read: false,
+               favorited: false,
+               index: 0,
+               name: "Bob and Betty Beyster Building Bake Off (BBBBB)",
+               information: "Draw something funny on the board in room 1670 BBB",
+               long: -83.71626555919647,
+               lat: 42.29294516616928
+             },
+              {completed: false,
+               started: false,
+               read: false,
+               favorited: false,
+               index: 1,
+               name: "Thanks U(I) for the Memories",
+               information: "High-five and thank a 493 IA in room 1670 BBB",
+               long: -83.71626555919647,
+               lat: 42.29294516616928
+            },
+              {completed: false,
+               started: false,
+               read: false,
+               favorited: false,
+               index: 2,
+               name: "Art at the UMMA",
+               information: "Take three photos of art pieces you enjoyed",
+               long: -83.73983681201935,
+               lat: 42.27559012188965
+            },
+              {completed: false,
+               started: false,
+               read: false,
+               favorited: false,
+               index: 3,
+               name: "Diag Dinner",
+               information: "Catch 3 campus squirrels",
+               long: -83.73821139335631,
+               lat: 42.276892015270626,
+             },
 
-          ],
-    quest: {
-      completed: false,
-      started: false,
-      read: false,
-      favorited: false,
-      information: " ",
-      name: " ",
-    }
+            ],
+      quest: {
+        completed: false,
+        started: false,
+        read: false,
+        favorited: false,
+        information: " ",
+        name: " ",
+      }
+    };
 
     //let Quest = {completed: false, started: false, read: false, favorited: false},
     //TODO: quest object should also include map information (quest location and quest distance from user)
   },
+
+  mounted() {
+    this.$nextTick( function() {
+      mapboxgl.accessToken = this.accessToken;
+      this.get_loc()
+    })
+  },
+
   methods: {
 
     // TO SWITCH PAGES:
@@ -255,51 +269,123 @@ var test = new Vue({
       this.emote = !this.emote;
     },
 
+    // MAPBOX
+    get_loc: function() {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.test_start_lat = position.coords.latitude;
+        this.test_start_long = position.coords.longitude;
+        console.log(this.test_start_long, this.test_start_lat); //test api with a console log
+        this.test_map = new mapboxgl.Map({
+          container: "map",
+          style: 'mapbox://styles/team-guzzie/ckviauzayahyg14pcmcsenbvt/draft',
+          center: [this.test_start_long, this.test_start_lat],
+          zoom: 13,
+        });
+        for (i = 0; i < this.questList.length; ++i) {
+          this.add_marker(this.questList[i].long, this.questList[i].lat, this.questList[i].name)
+        }
+
+        new mapboxgl.Marker({
+          color: "#868BFE"
+        })
+          .setLngLat([this.test_start_long, this.test_start_lat])
+          .setPopup(new mapboxgl.Popup().setHTML("<span>Current Location!</span>"))
+          .addTo(this.test_map);
+      })
+    },
+
+    add_marker: function(long, lat, sentence) {
+      new mapboxgl.Marker()
+        .setLngLat([long, lat])
+        .setPopup(new mapboxgl.Popup().setHTML("<span>" + sentence + "</span>"))
+        .addTo(this.test_map);
+    }
 
   } // methods
 })
 
-// mapbox
-mapboxgl.accessToken = 'pk.eyJ1IjoidGVhbS1ndXp6aWUiLCJhIjoiY2t2aWFyaXhhY2kyMDJ3bnpvZzJuZTZ5aCJ9.JTDWinEddb4DDs-Rka2G6A';
-$(document).ready(function() {
-    console.log( "ready!" );
-    navigator.geolocation.getCurrentPosition((position) => {
-      var start_lat = position.coords.latitude;
-      var start_long = position.coords.longitude;
-      console.log(start_long, start_lat); //test api with a console log
+// THIS IS ALL DEPRECATED SHIT 
+// import mapboxgl from "mapbox-gl";
 
-      const map = new mapboxgl.Map({
-        container: 'map', // container ID
-        style: 'mapbox://styles/team-guzzie/ckviauzayahyg14pcmcsenbvt/draft', // style URL
-        center: [start_long, start_lat], // starting position [lng, lat]
-        zoom: 13 // starting zoom
-      });
+// export default {
+//   name: "BaseMap",
+//   data() {
+//     return {
+//       accessToken:'pk.eyJ1IjoidGVhbS1ndXp6aWUiLCJhIjoiY2t2aWFyaXhhY2kyMDJ3bnpvZzJuZTZ5aCJ9.JTDWinEddb4DDs-Rka2G6A',
+//       test_start_long: 0,
+//       test_start_lat: 0,
+//     };
+//   },
+//   mounted() {
+//     // this.$nextTick( function() {
+//     //
+//     // })
+//     mapboxgl.accessToken = this.accessToken;
+//     this.get_loc();
+//     new mapboxgl.Map({
+//       container: "mapContainer",
+//       style: 'mapbox://styles/team-guzzie/ckviauzayahyg14pcmcsenbvt/draft',
+//       center: [this.test_start_long, this.test_start_lat],
+//       zoom: 13,
+//       // maxBounds: [
+//       //   [103.6, 1.1704753],
+//       //   [104.1, 1.4754753],
+//       // ],
+//     });
+//   },
+//
+//   methods: {
+//     get_loc: function() {
+//       navigator.geolocation.getCurrentPosition((position) => {
+//         this.test_start_lat = position.coords.latitude;
+//         this.test_start_long = position.coords.longitude;
+//         console.log(start_long, start_lat); //test api with a console log
+//       })
+//     }
+//   }
+// };
 
-      const marker = new mapboxgl.Marker({
-        color: "#868BFE"
-      })
-        .setLngLat([start_long, start_lat])
-        .setPopup(new mapboxgl.Popup().setHTML("<span>Current Location!</span>"))
-        .addTo(map);
-
-      const marker_bbb = new mapboxgl.Marker()
-        .setLngLat([-83.71726555919647, 42.29294516616900])
-        .setPopup(new mapboxgl.Popup().setHTML("<span>Bob and Betty Beyster Building Bake Off (BBBBB)</span>"))
-        .addTo(map);
-
-      const marker_bbb2 = new mapboxgl.Marker()
-        .setLngLat([-83.71626555919647, 42.29294516616928])
-        .setPopup(new mapboxgl.Popup().setHTML("<span>Thanks U(I) for the Memories</span>"))
-        .addTo(map);
-
-      const marker_umma = new mapboxgl.Marker()
-        .setLngLat([-83.73983681201935, 42.27559012188965])
-        .setPopup(new mapboxgl.Popup().setHTML("<span>Art at the UMMA!</span>"))
-        .addTo(map);
-
-      const marker_diag = new mapboxgl.Marker()
-        .setLngLat([-83.73821139335631, 42.276892015270626])
-        .setPopup(new mapboxgl.Popup().setHTML("<span>Diag Dinner</span>"))
-        .addTo(map);
-    })
-})
+// // mapbox
+// mapboxgl.accessToken = 'pk.eyJ1IjoidGVhbS1ndXp6aWUiLCJhIjoiY2t2aWFyaXhhY2kyMDJ3bnpvZzJuZTZ5aCJ9.JTDWinEddb4DDs-Rka2G6A';
+// $(document).ready(function() {
+//     console.log( "ready!" );
+//     navigator.geolocation.getCurrentPosition((position) => {
+//       var start_lat = position.coords.latitude;
+//       var start_long = position.coords.longitude;
+//       console.log(start_long, start_lat); //test api with a console log
+//
+//       const map = new mapboxgl.Map({
+//         container: 'map', // container ID
+//         style: 'mapbox://styles/team-guzzie/ckviauzayahyg14pcmcsenbvt/draft', // style URL
+//         center: [start_long, start_lat], // starting position [lng, lat]
+//         zoom: 13 // starting zoom
+//       });
+//
+//       const marker = new mapboxgl.Marker({
+//         color: "#868BFE"
+//       })
+//         .setLngLat([start_long, start_lat])
+//         .setPopup(new mapboxgl.Popup().setHTML("<span>Current Location!</span>"))
+//         .addTo(map);
+//
+//       const marker_bbb = new mapboxgl.Marker()
+//         .setLngLat([-83.71726555919647, 42.29294516616900])
+//         .setPopup(new mapboxgl.Popup().setHTML("<span>Bob and Betty Beyster Building Bake Off (BBBBB)</span>"))
+//         .addTo(map);
+//
+//       const marker_bbb2 = new mapboxgl.Marker()
+//         .setLngLat([-83.71626555919647, 42.29294516616928])
+//         .setPopup(new mapboxgl.Popup().setHTML("<span>Thanks U(I) for the Memories</span>"))
+//         .addTo(map);
+//
+//       const marker_umma = new mapboxgl.Marker()
+//         .setLngLat([-83.73983681201935, 42.27559012188965])
+//         .setPopup(new mapboxgl.Popup().setHTML("<span>Art at the UMMA!</span>"))
+//         .addTo(map);
+//
+//       const marker_diag = new mapboxgl.Marker()
+//         .setLngLat([-83.73821139335631, 42.276892015270626])
+//         .setPopup(new mapboxgl.Popup().setHTML("<span>Diag Dinner</span>"))
+//         .addTo(map);
+//     })
+// })
