@@ -103,7 +103,7 @@ add animations
 						<p v-show="!questRead(idx)" class="questStatus">New Quest!</p>
 					</div>
 				  	<!--TODO: must change according to state (v-if)?-->
-				  	<button class="questBodyBtn" onclick = playTap() v-on:click="SwitchDetails(idx); setRead(idx)">
+				  	<button class="questBodyBtn" onclick = playTap() v-on:click="SwitchDetails(idx); setRead(idx); quest_details_map(idx)">
 						<p>Quest Details</p>
 						<!-- v-on:click: switch quest list to clicked-quest details-->
 					</button>
@@ -127,14 +127,19 @@ add animations
 					<p>End Quest</p>
 				</button>
 			</div>
+
+			<div v-show="!questCompleted(questIndex)" id="questMap"></div>
+			<button id="googleButton" v-on:click=openMaps(questIndex)>Open in Google Maps</button>
+
 			<div v-show="questCompleted(questIndex)">
 				<button id = "startEnd" onclick = playRestart() v-on:click="setRestart(questIndex)">
 					<p>Restart Quest</p>
 				</button>
 			</div>
+
 		</div>
 
-		<div id="Map" v-show="mapPage" v-on:click="add_marker" >
+		<div id="Map" v-show="mapPage">
 			<h1> Map View </h1>
 			<template>
 			  <div id="map">

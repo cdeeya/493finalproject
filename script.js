@@ -23,8 +23,8 @@ var test = new Vue({
   data () {
     return {
       accessToken:'pk.eyJ1IjoidGVhbS1ndXp6aWUiLCJhIjoiY2t2aWFyaXhhY2kyMDJ3bnpvZzJuZTZ5aCJ9.JTDWinEddb4DDs-Rka2G6A',
-      test_start_long: 0,
-      test_start_lat: 0,
+      test_start_long: 0, // very first start longitude when the site loads
+      test_start_lat: 0, // very first start latitude when the site loads
       // tracking status of page displaying
       profilePage: true,
       questListPage: false,
@@ -37,7 +37,11 @@ var test = new Vue({
       // profileQuest: "Start a Quest!",
       startedExists: false,
       startedQuests: [],
-      test_map: "",
+
+      // map objects
+      test_map: "", // map used in Map View -- container id "map"
+      quest_map: "", // map used in Quest Details -- container id "questMap"
+      curr_quest_marker: "", // individual quest markers used in the map for quest detail view
 
       //quest object
       questList: [
@@ -97,12 +101,11 @@ var test = new Vue({
     //TODO: quest object should also include map information (quest location and quest distance from user)
   },
 
+  // preloads all the mapbox stuff
   mounted() {
-    this.$nextTick( function() {
-      mapboxgl.accessToken = this.accessToken;
-      this.get_loc()
-    })
-  },
+    mapboxgl.accessToken = this.accessToken;
+    this.get_loc() // takes approx. 5 seconds to geolocate -- use loading screen to offset this wait time pls
+  }, // mounted
 
   methods: {
 
@@ -272,39 +275,106 @@ var test = new Vue({
     // MAPBOX
     get_loc: function() {
       navigator.geolocation.getCurrentPosition((position) => {
+        // get initial coords
         this.test_start_lat = position.coords.latitude;
         this.test_start_long = position.coords.longitude;
         console.log(this.test_start_long, this.test_start_lat); //test api with a console log
-        this.test_map = new mapboxgl.Map({
+
+        // create local copy of map used in Map View
+        const test_map = new mapboxgl.Map({
           container: "map",
           style: 'mapbox://styles/team-guzzie/ckviauzayahyg14pcmcsenbvt/draft',
           center: [this.test_start_long, this.test_start_lat],
           zoom: 13,
         });
+
+        // add in markers based on info from questList
         for (i = 0; i < this.questList.length; ++i) {
-          this.add_marker(this.questList[i].long, this.questList[i].lat, this.questList[i].name)
+          new mapboxgl.Marker()
+            .setLngLat([this.questList[i].long, this.questList[i].lat])
+            .setPopup(new mapboxgl.Popup().setHTML("<span>" + this.questList[i].name + "</span>"))
+            .addTo(test_map);
         }
 
-        new mapboxgl.Marker({
-          color: "#868BFE"
-        })
-          .setLngLat([this.test_start_long, this.test_start_lat])
-          .setPopup(new mapboxgl.Popup().setHTML("<span>Current Location!</span>"))
-          .addTo(this.test_map);
-      })
-    },
+        // add geolocation control (not automatic, user must click geolocate button)
+        test_map.addControl(
+          new mapboxgl.GeolocateControl({
+            positionOptions: {
+            enableHighAccuracy: true
+            },
+            // When active the map will receive updates to the device's location as it changes.
+            trackUserLocation: true,
+            // Draw an arrow next to the location dot to indicate which direction the device is heading.
+            showUserHeading: true
+          })
+        );
 
+        // assign vue object to local copy
+        this.test_map = test_map
+
+        // create local copy of map used in Quest Details View
+        const quest_map = new mapboxgl.Map({
+          container: "questMap",
+          style: 'mapbox://styles/team-guzzie/ckviauzayahyg14pcmcsenbvt/draft',
+          center: [this.test_start_long, this.test_start_lat],
+          zoom: 13,
+        })
+
+        // create a geolocate control that triggers automatically so users don't have to click on the button
+        const geolocate = new mapboxgl.GeolocateControl({
+          positionOptions: {
+          enableHighAccuracy: true
+          },
+          // When active the map will receive updates to the device's location as it changes.
+          trackUserLocation: true,
+          // Draw an arrow next to the location dot to indicate which direction the device is heading.
+          showUserHeading: true
+        })
+        quest_map.addControl(geolocate);
+        quest_map.on('load', () => {
+          geolocate.trigger();
+        });
+
+        // assign vue object to local copy
+        this.quest_map = quest_map
+      }) // navigator.geolocation API end
+    }, // get_loc()
+
+    // helper function to add markers
     add_marker: function(long, lat, sentence) {
-      new mapboxgl.Marker()
+      this.curr_quest_marker = ""
+      const local_map = this.quest_map
+
+      const local_marker = new mapboxgl.Marker()
         .setLngLat([long, lat])
         .setPopup(new mapboxgl.Popup().setHTML("<span>" + sentence + "</span>"))
-        .addTo(this.test_map);
-    }
+        .addTo(local_map);
 
+      local_map.setCenter([long, lat])
+      this.curr_quest_marker = local_marker
+      this.quest_map = local_map
+    }, // add_marker()
+
+    // add individual marker to map in quest details page
+    quest_details_map: function(idx) {
+      this.add_marker(this.questList[idx].long, this.questList[idx].lat, this.questList[idx].name);
+    }, // quest_details_map()
+
+    openMaps: function (questIndex) {
+      // get current location
+      navigator.geolocation.getCurrentPosition((position) => {
+        const lat = position.coords.latitude;
+        const long = position.coords.longitude;
+        // open in google maps and show a route from current location to destination
+        window.open("https://www.google.com/maps/dir/?api=1&origin=" + lat + "%2C" + long +
+        "&destination=" + this.questList[questIndex].lat + "%2C" + this.questList[questIndex].long, "_blank");
+      })
+
+    }, // openMaps()
   } // methods
 })
 
-// THIS IS ALL DEPRECATED SHIT 
+// THIS IS ALL DEPRECATED SHIT
 // import mapboxgl from "mapbox-gl";
 
 // export default {
