@@ -92,10 +92,41 @@ body{
     max-width: 50vw;
     max-height: 60vh;
 }
+.avatarHead {
+    position: absolute;
+    left: 10%;
+}
+.avatarBody {
+    position: absolute;
+    left: 10%;
+}
+.avatarAcc {
+    position: absolute;
+    left: 10%;
+}
+#avatarButton {
+    max-width: 20vw;
+    max-height: 20vh;
+}
+
 
 #exp, #levelLabel  {
     padding: 0;
 }
+
+#shirticon {
+  max-width:20vw;
+  max-height:20vw;
+
+}
+.customization {
+  height: 70%;
+  background-color: gainsboro;
+  top:20%;
+  z-index: 35;
+
+}
+
 
 #StartProfile {
     background-color: #e1e9ee;

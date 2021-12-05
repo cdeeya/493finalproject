@@ -34,9 +34,18 @@ var test = new Vue({
       questIndex: 0,
       currLevel: 1,
       expPts: 0,
+      avatarScreen: false,
+      headIndex: 0,
+      bodyIndex: 0,
+      accIndex: 0,
       // profileQuest: "Start a Quest!",
       startedExists: false,
       startedQuests: [],
+
+      // avatar customization
+      avatarUnlockedHeads: ["images/UI_avatar/avatar_blank.png", "images/UI_avatar/avatar_top1.png","images/UI_avatar/avatar_top2.png", "images/UI_avatar/avatar_top3.png"],
+      avatarUnlockedBody: ["images/UI_avatar/avatar_blank.png","images/UI_avatar/avatar_body1.png"],
+      avatarUnlockedAcc: ["images/UI_avatar/avatar_blank.png"],
 
       // map objects
       test_map: "", // map used in Map View -- container id "map"
@@ -147,6 +156,33 @@ var test = new Vue({
       this.profilePage = false;
       this.mapPage = false;
       this.questDetailsPage = true;
+    },
+
+    toggleCustom: function() {
+      if (this.avatarScreen == true) {
+        this.avatarScreen = false;
+        return;
+      }
+      this.avatarScreen = true;
+
+    },
+
+    toggleHead: function(index) {
+      console.log("switching hair");
+      this.headIndex = index;
+    },
+
+    toggleBody: function(index) {
+      this.bodyIndex = index;
+    },
+
+    toggleAcc: function(index) {
+      this.accIndex = index;
+    },
+
+    unlockRewardA: function() {
+      console.log("this unlocks a new head")
+      this.avatarUnlockedHeads.push("images/UI_avatar/avatar_top4.png");
     },
 
     //FILL UP QUEST Info

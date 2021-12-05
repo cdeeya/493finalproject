@@ -72,7 +72,27 @@ add animations
 			<img id = "emote" v-if="!emote" src="images/happy.png" v-on:click="toggleEmote()" alt="happy emote" />
 			<img id = "emote" v-else src="images/love.png" v-on:click="toggleEmote()" alt="heart emote" />
 			<br>
-			<img id = "profilePic" src="images/chara1.png" alt="profile image"/>
+			<div id="avatar">
+				<img id = "profilePic" src="images/UI_avatar/avatar_base.png" alt="profile image"/>
+
+				<!-- avatar customization section -->
+				<img class="avatarHead" id="profilePic" v-bind:src= "avatarUnlockedHeads[headIndex]">
+				<img class="avatarBody" id="profilePic" v-bind:src= "avatarUnlockedBody[bodyIndex]">
+				<img class="avatarAcc" id="profilePic" v-bind:src="avatarUnlockedAcc[accIndex]">
+			</div>
+			<!-- Button for changing clothes -->
+				<img id="shirticon" v-on:click="toggleCustom()" src="images/icons/shirt_icon.png" alt="shirt icon" /></a>
+
+			<!-- Pop up where users select the items they want to wear -->
+			<div class="customization" v-show="avatarScreen">
+				<h1>Customize Your Avatar</h1>
+				<p>Head</p>
+				<div id="avatarButton" v-for= "(head, idx) in avatarUnlockedHeads">
+					<img id="avatarButton"  v-on:click="toggleHead(idx)" v-bind:src="avatarUnlockedHeads[idx]">
+				</div>
+				<button v-on:click="toggleCustom()">Done!</button>
+			</div>
+
 			<h1 id="levelLabel"> LEVEL {{currLevel}}</h1>
 			<div id="exp">
 				<h1 id="expLabel">{{expPts}} EXP </h1>
@@ -123,7 +143,7 @@ add animations
 				</button>
 			</div>
 			<div v-show="questStarted(questIndex)">
-				<button id = "startEnd" onclick = playEnd() v-on:click="setCompleted(questIndex)">
+				<button id = "startEnd" onclick = playEnd() v-on:click="setCompleted(questIndex); unlockRewardA()">
 					<p>End Quest</p>
 				</button>
 			</div>
