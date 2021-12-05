@@ -55,6 +55,7 @@ var test = new Vue({
       //quest object
       questList: [
               {completed: false,
+               restarted: false,
                started: false,
                read: false,
                favorited: false,
@@ -66,6 +67,7 @@ var test = new Vue({
              },
               {completed: false,
                started: false,
+               restarted: false,
                read: false,
                favorited: false,
                index: 1,
@@ -76,6 +78,7 @@ var test = new Vue({
             },
               {completed: false,
                started: false,
+               restarted: false,
                read: false,
                favorited: false,
                index: 2,
@@ -86,6 +89,7 @@ var test = new Vue({
             },
               {completed: false,
                started: false,
+               restarted: false,
                read: false,
                favorited: false,
                index: 3,
@@ -180,8 +184,11 @@ var test = new Vue({
       this.accIndex = index;
     },
 
-    unlockRewardA: function() {
+    unlockRewardA: function(index) {
       console.log("this unlocks a new head")
+      if (this.questList[index].restarted) {
+        return;
+      }
       this.avatarUnlockedHeads.push("images/UI_avatar/avatar_top4.png");
     },
 
@@ -239,6 +246,9 @@ var test = new Vue({
         return false;
       }
     },
+    questRestarted: function(idx) {
+
+    },
     questRead: function(idx) {
       if (this.questList[idx].read == true) {
         return true;
@@ -291,13 +301,22 @@ var test = new Vue({
       this.expPts += 100;
       // move this to a stylized modal later
       // alert("Congrats, you finished a quest! You've earned 100 EXP Points");
+      if (this.questList[idx].restarted == true){
+        Swal.fire({title: "Congrats, you finished a quest!",});
+        return;
+      }
+
       Swal.fire({title: "Congrats, you finished a quest! You've earned 100 EXP Points and a new item for your Avatar!",});
     },
 
-    setRestart: function(idx) {
+    setRestarted: function(idx) {
       this.questList[idx].read = true;
       this.questList[idx].started = true;
       this.questList[idx].completed = false;
+      this.questList[idx].restarted = true;
+      // if (this.questList[idx].completed == true){
+      //   this.questList[idx].restarted = true;
+      // }
     },
 
     toggleFavorited: function(idx) {
