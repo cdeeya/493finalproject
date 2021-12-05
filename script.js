@@ -291,7 +291,7 @@ var test = new Vue({
       this.expPts += 100;
       // move this to a stylized modal later
       // alert("Congrats, you finished a quest! You've earned 100 EXP Points");
-      Swal.fire({title: "Congrats, you finished a quest! You've earned 100 EXP Points",});
+      Swal.fire({title: "Congrats, you finished a quest! You've earned 100 EXP Points and a new item for your Avatar!",});
     },
 
     setRestart: function(idx) {
