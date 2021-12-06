@@ -61,7 +61,7 @@ var test = new Vue({
                favorited: false,
                index: 0,
                name: "Bob and Betty Beyster Building Bake Off (BBBBB)",
-               information: "Draw something funny on the board in room 1670 BBB",
+               information: "Head to the Bob and Betty Beyster Building on North Campus and find room 1670! Draw something funny on the board.",
                long: -83.71626555919647,
                lat: 42.29294516616928
              },
@@ -72,7 +72,7 @@ var test = new Vue({
                favorited: false,
                index: 1,
                name: "Thanks U(I) for the Memories",
-               information: "High-five and thank a 493 IA in room 1670 BBB",
+               information: "Head to the Bob and Betty Beyster Building and go to room 1670. Find an EECS493 IA and high-five them!",
                long: -83.71626555919647,
                lat: 42.29294516616928
             },
@@ -83,7 +83,7 @@ var test = new Vue({
                favorited: false,
                index: 2,
                name: "Art at the UMMA",
-               information: "Take three photos of art pieces you enjoyed",
+               information: "Head to the UMMA (University of Michigan Museum of Art). Go inside and find the famous photoshoot heart installation. Take a photo of yourself in front of it!",
                long: -83.73983681201935,
                lat: 42.27559012188965
             },
@@ -94,7 +94,7 @@ var test = new Vue({
                favorited: false,
                index: 3,
                name: "Diag Dinner",
-               information: "Catch 3 campus squirrels",
+               information: "Head to the Diag! Locate and catch 3 campus squirrels while avoiding stepping on the M!",
                long: -83.73821139335631,
                lat: 42.276892015270626,
              },
