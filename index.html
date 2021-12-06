@@ -45,7 +45,7 @@ add animations
 
 -->
 
-<body>
+<body onload="viewport()">
 <div id='app'>
 
 	<div id = "heading">
@@ -69,10 +69,11 @@ add animations
 	<div id = "content" >
 		<div id="Profile" v-show="profilePage" >
 			<h1> Profile </h1>
-			<img id = "emote" v-if="!emote" src="images/happy.png" v-on:click="toggleEmote()" alt="happy emote" />
-			<img id = "emote" v-else src="images/love.png" v-on:click="toggleEmote()" alt="heart emote" />
-			<br>
+			
 			<div id="avatar">
+				<img id = "emote" v-if="!emote" src="images/happy.png" v-on:click="toggleEmote()" alt="happy emote" />
+				<img id = "emote" v-else src="images/love.png" v-on:click="toggleEmote()" alt="heart emote" />
+				<br>
 				<img id = "profilePic" src="images/UI_avatar/avatar_base.png" alt="profile image"/>
 
 				<!-- avatar customization section -->
@@ -81,11 +82,12 @@ add animations
 				<img class="avatarAcc" id="profilePic" v-bind:src="avatarUnlockedAcc[accIndex]">
 			</div>
 			<!-- Button for changing clothes -->
-				<button v-on:click="toggleCustom()">Customize your Avatar!</button>
+			<button id="clothes" v-on:click="toggleCustom()">Customize your Avatar!</button>
 
 			<!-- Pop up where users select the items they want to wear -->
 			<div class="customization" v-show="avatarScreen">
 				<h1>Customize Your Avatar</h1>
+				<p> unlock more items with Quests!</p>
 				<p>Head</p>
 				<div id="avatarButton" v-for= "(head, idx) in avatarUnlockedHeads">
 					<img class="column-sm" id="avatarButton"  v-on:click="toggleHead(idx)" v-bind:src="avatarUnlockedHeads[idx]">
@@ -98,16 +100,19 @@ add animations
 				<div id="avatarButton" v-for= "(acc, idx) in avatarUnlockedAcc">
 						<img id="avatarButton" v-on:click="toggleAcc(idx)" v-bind:src="avatarUnlockedAcc[idx]">
 				</div>
-				<button v-on:click="toggleCustom()">Done!</button>
+				<br>
+				<button id="done" v-on:click="toggleCustom()">Done!</button>
 			</div>
 
-			<h1 id="levelLabel"> LEVEL {{currLevel}}</h1>
 			<div id="exp">
+				<h1 id="levelLabel"> LEVEL {{currLevel}}</h1>
 				<h1 id="expLabel">{{expPts}} EXP </h1>
 				<!-- <progress id="expBar" value="100" max="400"> {{expPts}}% </progress> -->
 			</div>
-			<button id="StartProfile" onclick=playTap() v-if="!startedExists" v-on:click="SwitchQuests()">Start a Quest!</button>
-			<button id="StartProfile" onclick=playTap() v-if="startedExists" v-on:click="SwitchDetailsProfile()">{{startedQuests[0].name}}</button>
+			<div id="shortcut" >
+				<button id="StartProfile" onclick=playTap() v-if="!startedExists" v-on:click="SwitchQuests()">Start a Quest!</button>
+				<button id="StartProfile" onclick=playTap() v-if="startedExists" v-on:click="SwitchDetailsProfile()">{{startedQuests[0].name}}</button>
+			</div>
 		</div>
 
 		<div id="Quests"  v-show="questListPage">
@@ -142,26 +147,28 @@ add animations
 		<!-- how to add back button function? -->
 		<div id = "QuestDetails" v-show="questDetailsPage">
 			<h1>Quest Details </h1>
-			<h2> {{questList[questIndex].name}} </h2>
-			<p>{{questList[questIndex].information}} </p>
-			<!-- v-show="{{questList[questIndex].started}}"   -->
-			<div v-show="!questStarted(questIndex)">
-				<button id = "startEnd"  onclick= playTap()  v-on:click="setStarted(questIndex)">
-					<p>Start Quest</p>
-				</button>
-			</div>
-			<div v-show="questStarted(questIndex)">
-				<button id = "startEnd" onclick = playEnd() v-on:click="setCompleted(questIndex); unlockRewards(questIndex)">
-					<p>Complete Quest</p>
-				</button>
-			</div>
-			<div v-show="questCompleted(questIndex)">
-				<button id = "startEnd" onclick = playRestart() v-on:click="setRestarted(questIndex)">
-					<p>Restart Quest</p>
-				</button>
+			<div class="detailInfo">
+				<h2> {{questList[questIndex].name}} </h2>
+				<p>{{questList[questIndex].information}} </p>
+				<!-- v-show="{{questList[questIndex].started}}"   -->
+				<div class="startEnd" v-show="!questStarted(questIndex)">
+					<button id = "startEnd"  onclick= playTap()  v-on:click="setStarted(questIndex)">
+						<p>Start Quest</p>
+					</button>
+				</div>
+				<div class="startEnd" v-show="questStarted(questIndex)">
+					<button id = "startEnd" onclick = playEnd() v-on:click="setCompleted(questIndex); unlockRewards(questIndex)">
+						<p>Complete Quest</p>
+					</button>
+				</div>
+				<div class="startEnd" v-show="questCompleted(questIndex)">
+					<button id = "startEnd" onclick = playRestart() v-on:click="setRestarted(questIndex)">
+						<p>Restart Quest</p>
+					</button>
+				</div>
+				<button id="googleButton" v-on:click=openMaps(questIndex)>Open in Google Maps</button>
 			</div>
 			<div v-show="!questCompleted(questIndex)" id="questMap"></div>
-			<button id="googleButton" v-on:click=openMaps(questIndex)>Open in Google Maps</button>
 
 			<!-- <div v-show="questCompleted(questIndex)">
 				<button id = "startEnd" onclick = playRestart() v-on:click="setRestarted(questIndex)">

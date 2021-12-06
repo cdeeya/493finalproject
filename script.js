@@ -17,6 +17,15 @@ function playRestart() {
   resetAudio.play();
 }
 
+function viewport() {
+  const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+  if (vw > 750) {
+    console.log("here");
+    document.getElementById("content").style.width = "750px";
+    document.getElementById("content").style.margin = "auto";
+  }
+}
+
 // VUE
 var test = new Vue({
   el: '#app',
