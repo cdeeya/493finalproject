@@ -343,12 +343,17 @@ var test = new Vue({
           zoom: 13,
         });
 
+//         test_map.on('load', function() {
+//           test_map.resize()
+// }       );
+
         // add in markers based on info from questList
         for (i = 0; i < this.questList.length; ++i) {
           new mapboxgl.Marker()
             .setLngLat([this.questList[i].long, this.questList[i].lat])
             .setPopup(new mapboxgl.Popup().setHTML("<span>" + this.questList[i].name + "</span>"))
-            .addTo(test_map);
+            .addTo(test_map)
+
         }
 
         // add geolocation control (not automatic, user must click geolocate button)
@@ -364,6 +369,7 @@ var test = new Vue({
           })
         );
 
+
         // assign vue object to local copy
         this.test_map = test_map
 
@@ -374,6 +380,10 @@ var test = new Vue({
           center: [this.test_start_long, this.test_start_lat],
           zoom: 13,
         })
+
+//         quest_map.on('load', function() {
+//           quest_map.resize()
+// }       );
 
         // create a geolocate control that triggers automatically so users don't have to click on the button
         const geolocate = new mapboxgl.GeolocateControl({
@@ -386,9 +396,9 @@ var test = new Vue({
           showUserHeading: true
         })
         quest_map.addControl(geolocate);
-        quest_map.on('load', () => {
-          geolocate.trigger();
-        });
+        // quest_map.on('load', () => {
+        //   geolocate.trigger();
+        // });
 
         // assign vue object to local copy
         this.quest_map = quest_map
@@ -400,7 +410,7 @@ var test = new Vue({
       this.curr_quest_marker = ""
       const local_map = this.quest_map
 
-      const local_marker = new mapboxgl.Marker()
+      const local_marker = new mapboxgl.Marker({ closeOnClick: false })
         .setLngLat([long, lat])
         .setPopup(new mapboxgl.Popup().setHTML("<span>" + sentence + "</span>"))
         .addTo(local_map);
@@ -426,6 +436,14 @@ var test = new Vue({
       })
 
     }, // openMaps()
+
+    adjust_main_map: function() {
+      setTimeout(() => this.test_map.resize(), 10)
+    },
+
+    adjust_quest_map: function() {
+      setTimeout(() => this.quest_map.resize(), 10)
+    },
   } // methods
 })
 
