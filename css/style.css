@@ -107,6 +107,9 @@ body{
 #avatarButton {
     max-width: 20vw;
     max-height: 20vh;
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
 }
 
 
@@ -114,16 +117,12 @@ body{
     padding: 0;
 }
 
-#shirticon {
-  max-width:20vw;
-  max-height:20vw;
-
-}
 .customization {
   height: 70%;
   background-color: gainsboro;
   top:20%;
   z-index: 35;
+  display: block;
 
 }
 
@@ -191,15 +190,18 @@ body{
 }
 
 #startEnd {
+
     background-color: gainsboro;
     position: fixed;
     left: 50%;
+    top: 28%;
     font-family: VT323;
     padding: 5px;
     margin-top: 10%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
 
 /* MAP */
 #Map {
@@ -217,7 +219,7 @@ body{
 
 #questMap {
     position: fixed;
-    top: 30vh;
+    top: 40vh;
     bottom: 0;
     /* vw and vh stand for viewport width/height. We are getting these in html file */
     width: 100vw;

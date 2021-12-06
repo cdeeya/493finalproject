@@ -44,8 +44,8 @@ var test = new Vue({
 
       // avatar customization
       avatarUnlockedHeads: ["images/UI_avatar/avatar_blank.png", "images/UI_avatar/avatar_top1.png","images/UI_avatar/avatar_top2.png", "images/UI_avatar/avatar_top3.png"],
-      avatarUnlockedBody: ["images/UI_avatar/avatar_blank.png","images/UI_avatar/avatar_body1.png"],
-      avatarUnlockedAcc: ["images/UI_avatar/avatar_blank.png"],
+      avatarUnlockedBody: ["images/UI_avatar/avatar_blank.png","images/UI_avatar/avatar_body1.png", "images/UI_avatar/avatar_body2.png"],
+      avatarUnlockedAcc: ["images/UI_avatar/avatar_blank.png", "images/UI_avatar/avatar_accessory1.png", "images/UI_avatar/avatar_accessory2.png"],
 
       // map objects
       test_map: "", // map used in Map View -- container id "map"
@@ -61,7 +61,7 @@ var test = new Vue({
                favorited: false,
                index: 0,
                name: "Bob and Betty Beyster Building Bake Off (BBBBB)",
-               information: "Draw something funny on the board in room 1670 BBB",
+               information: "Head to the Bob and Betty Beyster Building on North Campus and find room 1670! Draw something funny on the board.",
                long: -83.71626555919647,
                lat: 42.29294516616928
              },
@@ -72,7 +72,7 @@ var test = new Vue({
                favorited: false,
                index: 1,
                name: "Thanks U(I) for the Memories",
-               information: "High-five and thank a 493 IA in room 1670 BBB",
+               information: "Head to the Bob and Betty Beyster Building and go to room 1670. Find an EECS493 IA and high-five them!",
                long: -83.71626555919647,
                lat: 42.29294516616928
             },
@@ -83,7 +83,7 @@ var test = new Vue({
                favorited: false,
                index: 2,
                name: "Art at the UMMA",
-               information: "Take three photos of art pieces you enjoyed",
+               information: "Head to the UMMA (University of Michigan Museum of Art). Go inside and find the famous photoshoot heart installation. Take a photo of yourself in front of it!",
                long: -83.73983681201935,
                lat: 42.27559012188965
             },
@@ -94,7 +94,7 @@ var test = new Vue({
                favorited: false,
                index: 3,
                name: "Diag Dinner",
-               information: "Catch 3 campus squirrels",
+               information: "Head to the Diag! Locate and catch 3 campus squirrels while avoiding stepping on the M!",
                long: -83.73821139335631,
                lat: 42.276892015270626,
              },
@@ -184,13 +184,35 @@ var test = new Vue({
       this.accIndex = index;
     },
 
-    unlockRewardA: function(index) {
-      console.log("this unlocks a new head")
+    unlockRewards: function(index) {
+      console.log("this unlocks a reward")
       if (this.questList[index].restarted) {
         return;
       }
-      this.avatarUnlockedHeads.push("images/UI_avatar/avatar_top4.png");
+
+      if (index == 0) {
+        this.avatarUnlockedHeads.push("images/UI_avatar/avatar_top4.png");
+        return;
+      }
+      if (index == 1) {
+        this.avatarUnlockedBody.push("images/UI_avatar/avatar_body3.png");
+        return;
+      }
+      if (index == 2) {
+        this.avatarUnlockedBody.push("images/UI_avatar/avatar_body4.png");
+        this.avatarUnlockedHeads.push("images/UI_avatar/avatar_top5.png");
+        return;
+      }
+      if (index == 3) {
+        this.avatarUnlockedAcc.push("images/UI_avatar/avatar_accessory3.png");
+        this.avatarUnlockedAcc.push("images/UI_avatar/avatar_accessory4.png");
+        return;
+      }
+
     },
+
+
+
 
     //FILL UP QUEST Info
     //initialize our array with these empty quest objects
@@ -247,7 +269,12 @@ var test = new Vue({
       }
     },
     questRestarted: function(idx) {
-
+      if (this.questList[idx].restarted == true) {
+        return true;
+      }
+      else {
+        return false;
+      }
     },
     questRead: function(idx) {
       if (this.questList[idx].read == true) {
@@ -287,6 +314,7 @@ var test = new Vue({
       this.startedQuests.push(this.questList[idx]);
       console.log(this.startedQuests);
       this.startedExists = true;
+      Swal.fire({title: "You've started this quest! Follow the quest instructions and mark completed when you're done!",});
     },
     setCompleted: function(idx) {
       this.questList[idx].completed = true;

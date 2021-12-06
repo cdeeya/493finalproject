@@ -81,14 +81,22 @@ add animations
 				<img class="avatarAcc" id="profilePic" v-bind:src="avatarUnlockedAcc[accIndex]">
 			</div>
 			<!-- Button for changing clothes -->
-				<img id="shirticon" v-on:click="toggleCustom()" src="images/icons/shirt_icon.png" alt="shirt icon" /></a>
+				<button v-on:click="toggleCustom()">Customize your Avatar!</button>
 
 			<!-- Pop up where users select the items they want to wear -->
 			<div class="customization" v-show="avatarScreen">
 				<h1>Customize Your Avatar</h1>
 				<p>Head</p>
 				<div id="avatarButton" v-for= "(head, idx) in avatarUnlockedHeads">
-					<img id="avatarButton"  v-on:click="toggleHead(idx)" v-bind:src="avatarUnlockedHeads[idx]">
+					<img class="column-sm" id="avatarButton"  v-on:click="toggleHead(idx)" v-bind:src="avatarUnlockedHeads[idx]">
+				</div>
+				<p>Outfit</p>
+				<div id="avatarButton" v-for= "(body, idx) in avatarUnlockedBody">
+						<img id="avatarButton" v-on:click="toggleBody(idx)" v-bind:src="avatarUnlockedBody[idx]">
+				</div>
+				<p>Accessory</p>
+				<div id="avatarButton" v-for= "(acc, idx) in avatarUnlockedAcc">
+						<img id="avatarButton" v-on:click="toggleAcc(idx)" v-bind:src="avatarUnlockedAcc[idx]">
 				</div>
 				<button v-on:click="toggleCustom()">Done!</button>
 			</div>
@@ -143,19 +151,23 @@ add animations
 				</button>
 			</div>
 			<div v-show="questStarted(questIndex)">
-				<button id = "startEnd" onclick = playEnd() v-on:click="setCompleted(questIndex); unlockRewardA(questIndex)">
-					<p>End Quest</p>
+				<button id = "startEnd" onclick = playEnd() v-on:click="setCompleted(questIndex); unlockRewards(questIndex)">
+					<p>Complete Quest</p>
 				</button>
 			</div>
-
-			<div v-show="!questCompleted(questIndex)" id="questMap"></div>
-			<button id="googleButton" v-on:click=openMaps(questIndex)>Open in Google Maps</button>
-
 			<div v-show="questCompleted(questIndex)">
 				<button id = "startEnd" onclick = playRestart() v-on:click="setRestarted(questIndex)">
 					<p>Restart Quest</p>
 				</button>
 			</div>
+			<div v-show="!questCompleted(questIndex)" id="questMap"></div>
+			<button id="googleButton" v-on:click=openMaps(questIndex)>Open in Google Maps</button>
+
+			<!-- <div v-show="questCompleted(questIndex)">
+				<button id = "startEnd" onclick = playRestart() v-on:click="setRestarted(questIndex)">
+					<p>Restart Quest</p>
+				</button>
+			</div> -->
 
 		</div>
 
