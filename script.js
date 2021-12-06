@@ -269,7 +269,12 @@ var test = new Vue({
       }
     },
     questRestarted: function(idx) {
-
+      if (this.questList[idx].restarted == true) {
+        return true;
+      }
+      else {
+        return false;
+      }
     },
     questRead: function(idx) {
       if (this.questList[idx].read == true) {
@@ -309,6 +314,7 @@ var test = new Vue({
       this.startedQuests.push(this.questList[idx]);
       console.log(this.startedQuests);
       this.startedExists = true;
+      Swal.fire({title: "You've started this quest! Follow the quest instructions and mark completed when you're done!",});
     },
     setCompleted: function(idx) {
       this.questList[idx].completed = true;

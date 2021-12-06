@@ -152,18 +152,22 @@ add animations
 			</div>
 			<div v-show="questStarted(questIndex)">
 				<button id = "startEnd" onclick = playEnd() v-on:click="setCompleted(questIndex); unlockRewards(questIndex)">
-					<p>End Quest</p>
+					<p>Complete Quest</p>
 				</button>
 			</div>
-
-			<div v-show="!questCompleted(questIndex)" id="questMap"></div>
-			<button id="googleButton" v-on:click=openMaps(questIndex)>Open in Google Maps</button>
-
 			<div v-show="questCompleted(questIndex)">
 				<button id = "startEnd" onclick = playRestart() v-on:click="setRestarted(questIndex)">
 					<p>Restart Quest</p>
 				</button>
 			</div>
+			<div v-show="!questCompleted(questIndex)" id="questMap"></div>
+			<button id="googleButton" v-on:click=openMaps(questIndex)>Open in Google Maps</button>
+
+			<!-- <div v-show="questCompleted(questIndex)">
+				<button id = "startEnd" onclick = playRestart() v-on:click="setRestarted(questIndex)">
+					<p>Restart Quest</p>
+				</button>
+			</div> -->
 
 		</div>
 
