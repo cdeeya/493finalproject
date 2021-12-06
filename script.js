@@ -44,8 +44,8 @@ var test = new Vue({
 
       // avatar customization
       avatarUnlockedHeads: ["images/UI_avatar/avatar_blank.png", "images/UI_avatar/avatar_top1.png","images/UI_avatar/avatar_top2.png", "images/UI_avatar/avatar_top3.png"],
-      avatarUnlockedBody: ["images/UI_avatar/avatar_blank.png","images/UI_avatar/avatar_body1.png"],
-      avatarUnlockedAcc: ["images/UI_avatar/avatar_blank.png"],
+      avatarUnlockedBody: ["images/UI_avatar/avatar_blank.png","images/UI_avatar/avatar_body1.png", "images/UI_avatar/avatar_body2.png"],
+      avatarUnlockedAcc: ["images/UI_avatar/avatar_blank.png", "images/UI_avatar/avatar_accessory1.png", "images/UI_avatar/avatar_accessory2.png"],
 
       // map objects
       test_map: "", // map used in Map View -- container id "map"
@@ -184,13 +184,35 @@ var test = new Vue({
       this.accIndex = index;
     },
 
-    unlockRewardA: function(index) {
-      console.log("this unlocks a new head")
+    unlockRewards: function(index) {
+      console.log("this unlocks a reward")
       if (this.questList[index].restarted) {
         return;
       }
-      this.avatarUnlockedHeads.push("images/UI_avatar/avatar_top4.png");
+
+      if (index == 0) {
+        this.avatarUnlockedHeads.push("images/UI_avatar/avatar_top4.png");
+        return;
+      }
+      if (index == 1) {
+        this.avatarUnlockedBody.push("images/UI_avatar/avatar_body3.png");
+        return;
+      }
+      if (index == 2) {
+        this.avatarUnlockedBody.push("images/UI_avatar/avatar_body4.png");
+        this.avatarUnlockedHeads.push("images/UI_avatar/avatar_top5.png");
+        return;
+      }
+      if (index == 3) {
+        this.avatarUnlockedAcc.push("images/UI_avatar/avatar_accessory3.png");
+        this.avatarUnlockedAcc.push("images/UI_avatar/avatar_accessory4.png");
+        return;
+      }
+
     },
+
+
+
 
     //FILL UP QUEST Info
     //initialize our array with these empty quest objects

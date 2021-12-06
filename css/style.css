@@ -107,6 +107,9 @@ body{
 #avatarButton {
     max-width: 20vw;
     max-height: 20vh;
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
 }
 
 
@@ -114,16 +117,12 @@ body{
     padding: 0;
 }
 
-#shirticon {
-  max-width:20vw;
-  max-height:20vw;
-
-}
 .customization {
   height: 70%;
   background-color: gainsboro;
   top:20%;
   z-index: 35;
+  display: block;
 
 }
 
