@@ -28,6 +28,7 @@ body{
 /* frame for content */
 #content {
     margin-top: 5vh;
+    top: 12%;
 }
 
 /* HEADING */
