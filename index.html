@@ -69,7 +69,7 @@ add animations
 	<div id = "content" >
 		<div id="Profile" v-show="profilePage" >
 			<h1> Profile </h1>
-			
+
 			<div id="avatar">
 				<img id = "emote" v-if="!emote" src="images/happy.png" v-on:click="toggleEmote()" alt="happy emote" />
 				<img id = "emote" v-else src="images/love.png" v-on:click="toggleEmote()" alt="heart emote" />
@@ -102,7 +102,7 @@ add animations
 						<img id="avatarButton" v-on:click="toggleAcc(idx)" v-bind:src="avatarUnlockedAcc[idx]">
 				</div>
 				<br>
-				<button id="done" v-on:click="toggleCustom()">Done!</button>
+				<button id="done" v-on:click="toggleCustom()"><p>Done!</p></button>
 			</div>
 
 			<div id="exp">
@@ -151,6 +151,10 @@ add animations
 			<div class="detailInfo">
 				<h2> {{questList[questIndex].name}} </h2>
 				<p>{{questList[questIndex].information}} </p>
+				<p><strong>Reward</strong><br>
+					100 EXP<br>
+					New Accessory Item<br>
+				</p>
 				<!-- v-show="{{questList[questIndex].started}}"   -->
 				<div class="startEnd" v-show="(!questStarted(questIndex) && !questCompleted(questIndex))">
 					<button id = "startEnd"  onclick= playTap()  v-on:click="setStarted(questIndex)">

@@ -375,7 +375,7 @@ var test = new Vue({
         // create local copy of map used in Map View
         const test_map = new mapboxgl.Map({
           container: "map",
-          style: 'mapbox://styles/team-guzzie/ckviauzayahyg14pcmcsenbvt/draft',
+          style: 'mapbox://styles/team-guzzie/ckviauzayahyg14pcmcsenbvt',
           center: [this.test_start_long, this.test_start_lat],
           zoom: 13,
         });
@@ -406,6 +406,8 @@ var test = new Vue({
           })
         );
 
+        //fit the bounds to the markers
+        test_map.fitBounds([[-83.73983681201935, 42.27559012188965], [-83.71626555919647, 42.29294516616928]])
 
         // assign vue object to local copy
         this.test_map = test_map
@@ -413,7 +415,7 @@ var test = new Vue({
         // create local copy of map used in Quest Details View
         const quest_map = new mapboxgl.Map({
           container: "questMap",
-          style: 'mapbox://styles/team-guzzie/ckviauzayahyg14pcmcsenbvt/draft',
+          style: 'mapbox://styles/team-guzzie/ckviauzayahyg14pcmcsenbvt',
           center: [this.test_start_long, this.test_start_lat],
           zoom: 13,
         })
