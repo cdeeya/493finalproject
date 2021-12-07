@@ -52,7 +52,7 @@ add animations
 
 		<div id="location_text" v-show="!location_enabled">
 			<h2>Tutorial</h2>
-			<p>Please enable location sharing and allow popups with your browser!
+			<p>Please <b>enable location sharing</b> and <b>allow popups</b> with your browser!
 				We need to know where you are for this game to work :]<br>
 			</p>
 			<br>
@@ -70,7 +70,8 @@ add animations
 			<p>Tap on <img src="images/icons/profile.png" alt="Profile tab" /> to return to your Profile Page at any time.</p>
 			<h2>Happy Exploring!</h2>
 			<br>
-			<button id="startEnd" v-on:click="SwitchTutorial()" v-show="location_enabled && show_next_button"><p>Next</p></button>
+			<button v-bind:class="show_next_button ? 'next-disabled' : 'next-enabled'"
+			 v-on:click="SwitchTutorial()" v-show="location_enabled" :disabled="show_next_button"><p>Next</p></button>
 	</div>
 
 	</div>

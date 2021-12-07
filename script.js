@@ -51,7 +51,7 @@ var test = new Vue({
       startedExists: false,
       startedQuests: [],
       loading_tutorial: true,
-      show_next_button: false,
+      show_next_button: true,
       location_enabled: false,
 
       // avatar customization
@@ -129,15 +129,13 @@ var test = new Vue({
   // preloads all the mapbox stuff
   mounted() {
     mapboxgl.accessToken = this.accessToken;
-     // takes approx. 5 seconds to geolocate -- use loading screen to offset this wait time pls
-    // setTimeout(() => this.get_loc(), 15000)
 
   }, // mounted
 
   methods: {
 
     start_timeout: function() {
-      setTimeout(() => this.show_next_button = true, 5000)
+      setTimeout(() => this.show_next_button = false, 5000)
     },
 
     // TO SWITCH PAGES:

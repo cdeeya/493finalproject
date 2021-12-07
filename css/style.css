@@ -25,6 +25,7 @@ body{
     padding: 0;
 }
 
+
 /* frame for content */
 #content {
     margin-top: 5vh;
@@ -36,6 +37,9 @@ body{
   height: 100vh;
   background-color: gainsboro;
   text-align: center;
+  z-index: 2;
+  position: fixed;
+
   /* line-height: 50vh; */
 }
 
@@ -60,6 +64,35 @@ body{
 #tutorial_text img {
   width: 3vw;
   height: auto;
+}
+
+.next-enabled {
+  left: 0;
+  right: 0;
+  font-family: VT323;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  width: 50vw;
+  /* -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
+  color:white;
+  background-color:#868BFE;
+  border-radius: 15px;
+}
+
+.next-disabled {
+  left: 0;
+  right: 0;
+  font-family: VT323;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  width: 50vw;
+  /* -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
+  color:white;
+  background-color:#868BFE;
+  border-radius: 15px;
+  opacity: 0.3;
 }
 
 /* #tutorial_load span {
