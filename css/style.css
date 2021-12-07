@@ -10,7 +10,7 @@ h2 {
     margin: 1%;
 }
 p {
-    font-size: 3.5vw;
+    font-size: 3.75vw;
     margin: 3%;
 }
 span {
@@ -130,6 +130,7 @@ body{
     z-index: 10;
     color:white;
     background-color:#868BFE;
+    border-radius: 20px;
 }
 #Profile #done {
     font-family: VT323;
@@ -180,6 +181,7 @@ body{
     margin-bottom: 3vh;
     margin-top: 3vh;
     padding: 4%;
+    border-radius: 10px;
 }
 .questListRead {
     background-color: gainsboro;
@@ -210,6 +212,17 @@ body{
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    border-radius: 15px;
+}
+#googleButton {
+    font-family: VT323;
+    color:white;
+    background-color:#c0c0c0;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    width: 50vw;
+    border-radius: 15px;
+    margin: 5px;
 }
 
 
@@ -220,6 +233,7 @@ body{
 }
 .detailInfo{
     min-height: 15vh;
+    padding-bottom: 2vh;
 }
 .startEnd{
     left: 0;
@@ -227,7 +241,6 @@ body{
     align-items: center; 
 }
 #startEnd {
-    background-color: gainsboro;
     left: 0;
     right: 0;
     font-family: VT323;
@@ -238,6 +251,7 @@ body{
     transform: translate(-50%, -50%); */
     color:white;
     background-color:#868BFE;
+    border-radius: 15px;
 }
 
 

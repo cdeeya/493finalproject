@@ -82,7 +82,8 @@ add animations
 				<img class="avatarAcc" id="profilePic" v-bind:src="avatarUnlockedAcc[accIndex]">
 			</div>
 			<!-- Button for changing clothes -->
-			<button id="clothes" v-on:click="toggleCustom()">Customize your Avatar!</button>
+			<button id="clothes" v-on:click="toggleCustom()">
+				<p>Customize your Avatar!</p></button>
 
 			<!-- Pop up where users select the items they want to wear -->
 			<div class="customization" v-show="avatarScreen">
@@ -111,7 +112,7 @@ add animations
 			</div>
 			<div id="shortcut" >
 				<button id="StartProfile" onclick=playTap() v-if="!startedExists" v-on:click="SwitchQuests()">Start a Quest!</button>
-				<button id="StartProfile" onclick=playTap() v-if="startedExists" v-on:click="SwitchDetailsProfile()">{{startedQuests[0].name}}</button>
+				<button id="StartProfile" onclick=playTap() v-if="startedExists" v-on:click="SwitchDetailsProfile()">Quest in progress: {{startedQuests[0].name}}</button>
 			</div>
 		</div>
 
@@ -166,7 +167,8 @@ add animations
 						<p>Restart Quest</p>
 					</button>
 				</div>
-				<button id="googleButton" v-on:click=openMaps(questIndex)>Open in Google Maps</button>
+				<button id="googleButton" v-on:click=openMaps(questIndex)>
+					<p>Open in Google Maps</p></button>
 			</div>
 			<div v-show="!questCompleted(questIndex)" id="questMap"></div>
 
