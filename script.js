@@ -35,7 +35,7 @@ var test = new Vue({
       test_start_long: 0, // very first start longitude when the site loads
       test_start_lat: 0, // very first start latitude when the site loads
       // tracking status of page displaying
-      profilePage: true,
+      profilePage: false,
       questListPage: false,
       questDetailsPage: false,
       mapPage: false,
@@ -50,6 +50,9 @@ var test = new Vue({
       // profileQuest: "Start a Quest!",
       startedExists: false,
       startedQuests: [],
+      loading_tutorial: true,
+      show_next_button: false,
+      location_enabled: false,
 
       // avatar customization
       avatarUnlockedHeads: ["images/UI_avatar/avatar_blank.png", "images/UI_avatar/avatar_top1.png","images/UI_avatar/avatar_top2.png", "images/UI_avatar/avatar_top3.png"],
@@ -126,12 +129,24 @@ var test = new Vue({
   // preloads all the mapbox stuff
   mounted() {
     mapboxgl.accessToken = this.accessToken;
-    this.get_loc() // takes approx. 5 seconds to geolocate -- use loading screen to offset this wait time pls
+     // takes approx. 5 seconds to geolocate -- use loading screen to offset this wait time pls
+    // setTimeout(() => this.get_loc(), 15000)
+
   }, // mounted
 
   methods: {
 
+    start_timeout: function() {
+      setTimeout(() => this.show_next_button = true, 5000)
+    },
+
     // TO SWITCH PAGES:
+    SwitchTutorial: function() {
+      console.log("this hides the tutorial and loads profile page")
+      this.loading_tutorial = false
+      this.profilePage = true
+    },
+
     SwitchProfile: function () {
       console.log("this changes the page to profile page")
       this.profilePage = true;
@@ -335,7 +350,9 @@ var test = new Vue({
         this.startedExists = false;
       }
       // TODO: do we want to change EXP values later?
-      this.expPts += 100;
+      if (this.questList[idx].restarted == false) {
+        this.expPts += 100;
+      }
       // move this to a stylized modal later
       // alert("Congrats, you finished a quest! You've earned 100 EXP Points");
       if (this.questList[idx].restarted == true){

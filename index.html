@@ -37,7 +37,7 @@ add back button functionality
 Fix progress bar for EXP
 item/reward/badge system
 Integrate customizable avatar
-pop ups for "completed" screens -- confirm we can use this
+pop ups for "completed" screens confirm we can use this
 
 Add share system (share to friends/sns)
 
@@ -47,6 +47,33 @@ add animations
 
 <body onload="viewport()">
 <div id='app'>
+
+	<div class="tutorial_load" v-show="loading_tutorial">
+
+		<div id="location_text" v-show="!location_enabled">
+			<h2>Tutorial</h2>
+			<p>Please enable location sharing and allow popups with your browser!
+				We need to know where you are for this game to work :]<br>
+			</p>
+			<br>
+			<button id="startEnd" v-on:click="get_loc(); location_enabled = true; start_timeout()" v-show="!location_enabled"><p>Enable Location Access</p></button>
+		</div>
+
+		<div id="tutorial_text" v-show="location_enabled">
+			<h2>Tutorial</h2>
+			<p>Head to the Quest List <img src="images/icons/quests.png" alt="Quests tab" /> to get started with your Quests!
+			You can earn EXP and items to customize your Avatar.
+			</p>
+			<br>
+			<p>You can check the Map <img src="images/icons/map.png" alt="Map tab" /> to see where the Quests are located!</p>
+			<p>To locate yourself, tap on the <img src="images/icons/geolocate.png" alt="Geolocates" /> button on the corner of any map!</p>
+			<p>Tap on <img src="images/icons/profile.png" alt="Profile tab" /> to return to your Profile Page at any time.</p>
+			<h2>Happy Exploring!</h2>
+			<br>
+			<button id="startEnd" v-on:click="SwitchTutorial()" v-show="location_enabled && show_next_button"><p>Next</p></button>
+	</div>
+
+	</div>
 
 	<div id = "heading">
 		<p>Campus Quest</p>
@@ -171,7 +198,7 @@ add animations
 						<p>Restart Quest</p>
 					</button>
 				</div>
-				<button id="googleButton" v-on:click=openMaps(questIndex)>
+				<button id="googleButton" v-on:click=openMaps(questIndex) v-show="!questCompleted(questIndex)">
 					<p>Open in Google Maps</p></button>
 			</div>
 			<div v-show="!questCompleted(questIndex)" id="questMap"></div>

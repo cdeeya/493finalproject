@@ -31,6 +31,42 @@ body{
     top: 12%;
 }
 
+.tutorial_load {
+  width: 100vw;
+  height: 100vh;
+  background-color: gainsboro;
+  text-align: center;
+  /* line-height: 50vh; */
+}
+
+#tutorial_text {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#location_text {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#tutorial_text img {
+  width: 3vw;
+  height: auto;
+}
+
+/* #tutorial_load span {
+  text-align: center;
+  font-family: VT323;
+} */
+
 /* HEADING */
 #heading {
     height: 5vh;
@@ -101,8 +137,8 @@ body{
     position: absolute;
     left: 0;
     right: 0;
-    margin-left: auto; 
-    margin-right: auto; 
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 0;
 }
 /* .avatarHead {
@@ -239,7 +275,7 @@ body{
 .startEnd{
     left: 0;
     right: 0;
-    align-items: center; 
+    align-items: center;
 }
 #startEnd {
     left: 0;
