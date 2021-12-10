@@ -25,6 +25,23 @@ body{
     padding: 0;
 }
 
+@media only screen and (min-width: 1212px) {
+
+  #tutorial_text p {
+    font-size: 2.25vw;
+  }
+
+  #location_text p {
+    font-size: 2.25vw;
+  }
+
+  h2 {
+      font-size: 3.50vw;
+      margin: 1%;
+  }
+
+}
+
 
 /* frame for content */
 #content {
@@ -40,7 +57,6 @@ body{
   z-index: 2;
   position: fixed;
 
-  /* line-height: 50vh; */
 }
 
 #tutorial_text {
@@ -65,6 +81,10 @@ body{
   width: 3vw;
   height: auto;
 }
+
+/* #tutorial_text p {
+  font-size: 2vw;
+} */
 
 .next-enabled {
   left: 0;
