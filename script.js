@@ -234,51 +234,6 @@ var test = new Vue({
     },
 
 
-
-
-    //FILL UP QUEST Info
-    //initialize our array with these empty quest objects
-    //just straight hard code in the quest information
-    // fillQuestInfo: function() {
-    //   // TODO: how to initialize quest so v-for works???
-    //   //quest #1
-    //     this.questList.push = new quest; //look into initializing array with this object
-    //     this.questList[0].name = "Bob and Betty Beyster Building Bake Off (BBBBB)";
-    //     this.questList[0].information = "Draw something funny on the board in room 1670 BBB";
-
-    //   //quest #2
-    //     this.questList.push = new quest;
-    //     this.questList[1].name = "Bob and Betty Beyster Building Bake Off (BBBBB)";
-    //     this.questList[1].information = "Draw something funny on the board in room 1670 BBB";
-    // },
-
-    /*
-    checkQuests: function() {
-      // console.log("this checks quest bool values")
-      for (i = 0; i < this.questList.length; ++i){
-      //   // console.log("this is inside checkQuests() for loop")
-      //   // TODO: check + change(?) bool values of completed, started, read, favorited
-      //   // testing:
-      //   // questList[0].completed = true;
-        if (this.questList[i].started == true){
-          this.questIndex = i;
-          this.profileQuest = this.questList[i].name;
-          this.profilePage = false;
-          this.mapPage = false;
-          this.questDetailsPage = true;
-          this.questListPage = false;
-          break;
-        }
-        else{
-          this.profilePage = false;
-          this.mapPage = false;
-          this.questDetailsPage = false;
-          this.questListPage = true;
-        }
-      } // for
-    },
-    */
-
     // GETTERS
     questCompleted: function(idx) {
       // help please
@@ -322,10 +277,6 @@ var test = new Vue({
         return false;
       }
     },
-    /* getExp: function() {
-      console.log("here")
-      console.log(this.expPts);
-    }, */
 
     // SETTERS
     setRead: function(idx) {
@@ -366,9 +317,6 @@ var test = new Vue({
       this.questList[idx].started = true;
       this.questList[idx].completed = false;
       this.questList[idx].restarted = true;
-      // if (this.questList[idx].completed == true){
-      //   this.questList[idx].restarted = true;
-      // }
     },
 
     toggleFavorited: function(idx) {
@@ -501,7 +449,7 @@ var test = new Vue({
   } // methods
 })
 
-// THIS IS ALL DEPRECATED SHIT
+// THIS IS ALL DEPRECATED STUFF
 // import mapboxgl from "mapbox-gl";
 
 // export default {
