@@ -19,31 +19,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 </head>
 
-<!-- IMPORTANT:
-Design for mobile first!
-
-TODO LIST:
-
-*DEGR
-add map updating into quest details
-add map + quest cross functionality
-(something weird happens when we just reload page and go to map view:
-it doesn't take up the entire space and only does after resizing)
-
-toggle to filter for favorites in quest list
-
-add back button functionality
-
-Fix progress bar for EXP
-item/reward/badge system
-Integrate customizable avatar
-pop ups for "completed" screens confirm we can use this
-
-Add share system (share to friends/sns)
-
-add animations
-
--->
 
 <body onload="viewport()">
 <div id='app'>
@@ -150,15 +125,13 @@ add animations
 			<div v-for = "(quest, idx) in questList"
 				v-bind:class = "[questRead(idx) ? 'questListRead' : 'questList']">
 				<!-- <p>DEBUG: in for</p> -->
-				<!-- Note: need a way to click on quest and show more details-->
 				<div class="questEntry">
 					<div class="questTitle">
 						<h2>{{questList[idx].name}}</h2>
 						<img v-if="!questFavorited(idx)" v-on:click="toggleFavorited(idx)"
 							src="images/icons/unfavorited.png" alt="unfavorited" /></a>
 				  		<img v-else src="images/icons/favorited.png" v-on:click="toggleFavorited(idx)" alt="favorited" /></a>
-					<!-- toggle between the states? if started or completed, do not show anything else before that.  -->
-					<!-- we need to change icons for completed quests -->
+					<!-- toggle between the states. if started or completed, do not show anything else before that.  -->
 						<p class="questStatus" v-show="questStarted(idx)">Quest In-Progress</p>
 						<p class="questStatus" v-show="questCompleted(idx)">Quest Completed!</p>
 						<img v-if="questCompleted(idx)" src="images/icons/pixel_check.png" alt="checkmark"/></a>
@@ -173,7 +146,6 @@ add animations
 			</div>
 		</div>
 
-		<!-- how to add back button function? -->
 		<div id = "QuestDetails" v-show="questDetailsPage">
 			<h1>Quest Details </h1>
 			<div class="detailInfo">
